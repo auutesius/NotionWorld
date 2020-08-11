@@ -89,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         if(behavior != null)
         {
             behavior.SetVariableValue("TrackTarget", player);
+            behavior.EnableBehavior();
             behavior.Start();
         }
     }
