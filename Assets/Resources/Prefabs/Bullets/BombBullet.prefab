@@ -305,14 +305,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Speed: 1
-  AutoRecycleTime: 0.5
+  Speed: 2
+  AutoRecycleTime: 1
   Scale: {x: 1, y: 1, z: 1}
   HitAudioSource: {fileID: 5517540041709914817}
   HitEffect: WaterBombEffect
   DestoryEffect: WaterBombEffect
   AttackRange: 2
-  GravitationInternal: 2
+  GravitationInternal: 1
   GravitationPower: 2
 --- !u!1 &6750948043035557820
 GameObject:

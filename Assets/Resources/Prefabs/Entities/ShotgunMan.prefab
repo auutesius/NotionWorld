@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 2712061080187488531}
   - component: {fileID: 4293478930144574176}
   - component: {fileID: 1575613396147381027}
+  - component: {fileID: 3507492170005060492}
+  - component: {fileID: 8866228971055275822}
   m_Layer: 0
   m_Name: ShotgunMan
   m_TagString: Enemies
@@ -161,6 +163,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSkilling: 0
+--- !u!50 &3507492170005060492
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387152622994209026}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!114 &8866228971055275822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387152622994209026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5f52eb402956c43bfe4108b98d83f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  HealthSlider: {fileID: 0}
+  EnergySlider: {fileID: 0}
+  AimImage: {fileID: 0}
+  AimRange: {fileID: 0}
+  HasArrowPointer: 1
 --- !u!1 &4893261802471617204
 GameObject:
   m_ObjectHideFlags: 0

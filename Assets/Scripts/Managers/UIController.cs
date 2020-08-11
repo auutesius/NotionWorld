@@ -85,7 +85,7 @@ public class UIController : MonoBehaviour
     {
         if (AimRange != null)
         {
-            AimRange.transform.localScale = Vector3.one * entity.GetCapability<Attack>().Range / 0.32f; // 魔法数字0.32是UI与场景比例的转换
+            AimRange.transform.localScale = Vector3.one * entity.GetCapability<Attack>().Range / 0.26f; // 魔法数字0.26是UI与场景比例的转换
             AimRange.transform.position = MainCamera.WorldToScreenPoint(entity.transform.position);
         }
     }

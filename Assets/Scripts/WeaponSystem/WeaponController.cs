@@ -23,6 +23,8 @@ public class WeaponController : MonoBehaviour
         entity = GetComponent<Entity>();
         attack = entity.GetCapability<Attack>();
         action = new AttackAction();
+        gameObject.layer = LayerMask.NameToLayer(AttackTag == "Player" ? "Enemy" : "Player");
+        weapon.layer = LayerMask.NameToLayer(AttackTag == "Player" ? "Enemy" : "Player");
     }
 
     public void SetCollider(bool t)

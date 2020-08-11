@@ -74,7 +74,7 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if (IsNotRecycled)
         {
-            if (DestoryEffect != null || DestoryEffect != "")
+            if (DestoryEffect != null && DestoryEffect != "" && DestoryEffect != " ")
             {
                 GameObject shootHitEffect = ObjectPool.GetObject(DestoryEffect, "Effects");
                 shootHitEffect.transform.Rotate(m_euler);
@@ -90,7 +90,7 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if (IsNotRecycled)
         {
-            if (HitEffect != null || HitEffect != "")
+            if (HitEffect != null && HitEffect != "" && HitEffect != " ")
             {
                 GameObject shootHitEffect = ObjectPool.GetObject(HitEffect, "Effects");
                 shootHitEffect.transform.Rotate(m_euler);

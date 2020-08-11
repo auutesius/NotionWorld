@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class PlayerTest : MonoBehaviour
 {
     public float speed;
-    public SkillController skillController;
+    public SkillControllerForPlayer skillController;
     private Rigidbody2D RB;
     public Entity enmey;
     private Entity entity;

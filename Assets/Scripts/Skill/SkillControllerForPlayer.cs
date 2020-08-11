@@ -6,13 +6,13 @@ using NotionWorld.Capabilities;
 using NotionWorld.Actions;
 using System.Linq;
 
-public class SkillController : MonoBehaviour
+public class SkillControllerForPlayer : MonoBehaviour
 {
     public float ValidTime;
     public GameObject mask;
     private bool isAvailabe;
     private bool isWorking;
-    private Entity entity;
+    public Entity entity;
     private SkillAction skill;
 
     public void SetSkillAvailable(bool s)
@@ -24,9 +24,8 @@ public class SkillController : MonoBehaviour
         }
     }
 
-    public void StartSkillTime(Entity player)
+    public void StartSkillTime()
     {
-        entity = player;
         StartCoroutine(BulletTimeCD());
     }
 
@@ -58,11 +57,23 @@ public class SkillController : MonoBehaviour
             skill = new SkillAction();
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
             skill.TakeAction(entity);
+
+            mask.SetActive(false);
+            isWorking = false;
+            transform.GetChild(1).gameObject.SetActive(isWorking);
+            Time.timeScale = 1f;
         }
         else
         {
             Debug.LogError("技能编号越界");
         }
+    }
+
+    public void InvincibleButton()
+    {
+        InvincibleFragment invincibleFragment = new InvincibleFragment();
+        invincibleFragment.InternalTime = 1f;   // 无敌时间
+        invincibleFragment.TakeEffect(entity);
     }
 
 }

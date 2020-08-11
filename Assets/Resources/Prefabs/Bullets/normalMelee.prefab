@@ -254,8 +254,8 @@ MonoBehaviour:
   AutoRecycleTime: 0.08
   Scale: {x: 1, y: 1, z: 1}
   HitAudioSource: {fileID: 5517540041709914817}
-  HitEffect: MuzzleFlashGreen
-  DestoryEffect: MuzzleFlashRed
+  HitEffect: 
+  DestoryEffect: 
 --- !u!61 &5522420392789793821
 BoxCollider2D:
   m_ObjectHideFlags: 0
