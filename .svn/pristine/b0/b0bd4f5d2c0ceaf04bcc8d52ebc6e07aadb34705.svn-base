@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using NotionWorld.Capabilities;
+using NotionWorld.Entities;
+using NotionWorld.Worlds;
+using System.Threading.Tasks;
+using BehaviorDesigner.Runtime.Tasks.Basic.UnityQuaternion;
+
+namespace NotionWorld.Actions
+{
+    public sealed class RotateAttackFragment : Fragment
+    {
+        AttackFragment attackFragment = new AttackFragment();
+        public Vector3 AttackDir;
+        public string AttackTag;
+        public int SkillInternal;
+        public int RotateSpeed;
+        public override void TakeEffect(Entity actor)
+        {
+            AttackDir = actor.transform.up;
+            AttackTag = actor.gameObject.GetComponent<WeaponController>().AttackTag;
+            Delay((int)50/RotateSpeed, actor);
+        }
+        private async void Delay(int ms, Entity actor)
+        {
+            // 此处直接生成了近战的子弹，若需要一次判定可以更改为范围判断
+            int step = 0;
+            while (step < SkillInternal * 1000 / ms)
+            {
+                step++;
+                await Task.Delay(ms);
+                float euler = AttackDir.y > 0 ? -(Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI : -((Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI - 180);
+                GameObject bullet = ObjectPool.GetObject(actor.GetCapability<Attack>().AttackType, "Bullets");
+                bullet.GetComponent<Bullet>().Speed = actor.GetCapability<Attack>().BulletSpeed;
+                bullet.GetComponent<Bullet>().ActiveIt(actor.transform.position, new Vector3(0f, 0f, euler), actor.GetCapability<Attack>().Value, AttackTag);
+
+                AttackDir = Quaternion.AngleAxis(10f, Vector3.forward) * AttackDir;
+                Debug.Log(AttackDir);
+                actor.gameObject.GetComponent<WeaponController>().WeaponLookAt(AttackDir);
+            }
+        }
+    }
+
+}
