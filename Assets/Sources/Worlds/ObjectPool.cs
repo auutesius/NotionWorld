@@ -39,10 +39,6 @@ namespace NotionWorld.Worlds
                 {
                     //获取结果
                     result = pool[objName].Dequeue();
-                    if (result == null)
-                    {
-                        return null;
-                    }
                     //激活对象
                     result.SetActive(true);
                     //返回结果
