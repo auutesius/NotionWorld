@@ -4,6 +4,8 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using NotionWorld.Entities;
 using UnityEngine;
+using NotionWorld.Actions;
+using NotionWorld.Capabilities;
 
 namespace NotionWorld.Behaviors
 {
@@ -13,26 +15,35 @@ namespace NotionWorld.Behaviors
         [BehaviorDesigner.Runtime.Tasks.Tooltip("The GameObject that tracks.")]
         public SharedGameObject targetGameObject;
 
-        private Vector3 direction;
-
-        private EntityMovement movement;
-
-        [BehaviorDesigner.Runtime.Tasks.Tooltip("Move Trend of GameObject.")]
-        public MoveTrends trend;
-
         public enum MoveTrends
         {
             Towards, Away
         }
 
+        [BehaviorDesigner.Runtime.Tasks.Tooltip("Move Trend of GameObject.")]
+        public MoveTrends trend;
+
+        private Entity entity;
+
+        private Speed speed;
+
+        private MoveAction moveAction;
+
         public override void OnAwake()
         {
-            movement = Owner.GetComponent<EntityMovement>();
+            moveAction = new MoveAction();
+            entity = Owner.GetComponent<Entity>();
+        }
+
+        public override void OnStart()
+        {
+            speed = entity.GetCapability<Speed>();
         }
 
         public override TaskStatus OnUpdate()
         {
-            movement.Direction = MoveDirection(trend);
+            moveAction.Movement = Time.deltaTime * MoveDirection(trend) * speed.Value;
+            moveAction.TakeAction(entity);
             return TaskStatus.Success;
         }
 

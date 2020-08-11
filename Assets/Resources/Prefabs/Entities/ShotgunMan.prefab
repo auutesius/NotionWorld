@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 3387152622994209029}
   - component: {fileID: 2712061080187488531}
   - component: {fileID: 4293478930144574176}
-  - component: {fileID: 1575613396147381027}
   m_Layer: 0
   m_Name: ShotgunMan
   m_TagString: Enemies
@@ -182,19 +181,6 @@ MonoBehaviour:
   weapon: {fileID: 2681465380242439916}
   AttackTag: Player
   forward: {x: 0, y: 0, z: 0}
-  IsSkilling: 0
---- !u!114 &1575613396147381027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3387152622994209026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c32d4b7db65c54e9b9e78d30f340fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   IsSkilling: 0
 --- !u!1 &4893261802471617204
 GameObject:

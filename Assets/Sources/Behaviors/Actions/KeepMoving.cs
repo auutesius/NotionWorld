@@ -4,6 +4,8 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using NotionWorld.Entities;
 using UnityEngine;
+using NotionWorld.Actions;
+using NotionWorld.Capabilities;
 
 namespace NotionWorld.Behaviors
 {
@@ -15,10 +17,12 @@ namespace NotionWorld.Behaviors
 
         private Vector3 direction;
 
-        private EntityMovement movement;
-
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Move Trend of GameObject.")]
         public MoveTrends trend;
+
+        private Entity entity;
+
+        private Speed speed;
 
         public float targetDisturbance = 2.8F;
 
@@ -28,6 +32,8 @@ namespace NotionWorld.Behaviors
 
         private float currentTime = float.MaxValue;
 
+        private MoveAction moveAction;
+
         public enum MoveTrends
         {
             Towards, Away
@@ -35,7 +41,13 @@ namespace NotionWorld.Behaviors
 
         public override void OnAwake()
         {
-            movement = Owner.GetComponent<EntityMovement>();
+            moveAction = new MoveAction();
+            entity = Owner.GetComponent<Entity>();
+        }
+
+        public override void OnStart()
+        {
+            speed = entity.GetCapability<Speed>();
         }
 
         public override TaskStatus OnUpdate()
@@ -48,14 +60,20 @@ namespace NotionWorld.Behaviors
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
-                movement.Direction = direction;
+                moveAction.Movement = Time.deltaTime * direction * speed.Value;
+                moveAction.TakeAction(entity);
                 return TaskStatus.Running;
             }
             else
             {
-                currentTime = float.MaxValue;
+                ResetTime();
                 return TaskStatus.Success;
             }
+        }
+
+        private void ResetTime()
+        {
+            currentTime = float.MaxValue;
         }
 
         private Vector2 MoveDirection(MoveTrends trend)
