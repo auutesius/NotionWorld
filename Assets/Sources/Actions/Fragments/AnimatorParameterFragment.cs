@@ -18,30 +18,34 @@ namespace NotionWorld.Actions
             get; set;
         }
 
-        public void TakeEffect(Entity actor)
+        public Animator Animator
         {
-            Animator animator = actor.GetComponent<Animator>();
+            get; set;
+        }
+
+        public void TakeEffect()
+        {
             if(Name == null)
             {
                 throw new ArgumentNullException("Parameter name is null.");
             }
             if(Value == null)
             {
-                animator.SetTrigger(Name);
+                Animator.SetTrigger(Name);
             }
             Type type = Value.GetType();
 
             if(type == typeof(bool))
             {
-                animator.SetBool(Name, (bool)Value);
+                Animator.SetBool(Name, (bool)Value);
             }
             else if(type == typeof(int))
             {
-                animator.SetInteger(Name, (int)Value);
+                Animator.SetInteger(Name, (int)Value);
             }
             else if(type == typeof(float))
             {
-                animator.SetFloat(Name, (float)Value);
+                Animator.SetFloat(Name, (float)Value);
             }
             else
             {

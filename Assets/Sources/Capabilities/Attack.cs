@@ -25,6 +25,7 @@ namespace NotionWorld.Capabilities
         {
             get; set;
         }
+        
         public float BulletSpeed
         {
             get; set;

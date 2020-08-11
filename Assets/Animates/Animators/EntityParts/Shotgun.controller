@@ -9,7 +9,7 @@ AnimatorController:
   m_Name: Shotgun
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isAttacking
+  - m_Name: IsAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

@@ -4,6 +4,8 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using NotionWorld.Entities;
 using UnityEngine;
+using NotionWorld.Actions;
+using NotionWorld.Capabilities;
 
 namespace NotionWorld.Behaviors
 {
@@ -13,43 +15,44 @@ namespace NotionWorld.Behaviors
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Attack Target.")]
         public SharedGameObject targetGameObject;
 
-        private Vector3 direction;
+        [BehaviorDesigner.Runtime.Tasks.Tooltip("Attack Animator.")]
+        public SharedGameObject animator;
 
-        private EntityMovement movement;
+        private Entity entity;
 
-        [BehaviorDesigner.Runtime.Tasks.Tooltip("Move Trend of GameObject.")]
-        public MoveTrends trend;
+        private Attack attack;
 
-        public enum MoveTrends
-        {
-            Towards, Away
-        }
+        private EntityAttackAction attackAction;
+
+        private float coldDownTimer;
 
         public override void OnAwake()
         {
-            movement = Owner.GetComponent<EntityMovement>();
+            entity = Owner.GetComponent<Entity>();
+
+            attackAction = new EntityAttackAction();
+            attackAction.AttackAnimator = animator.Value.GetComponent<Animator>();
+        }
+
+        public override void OnStart()
+        {
+            attack = entity.GetCapability<Attack>();
         }
 
         public override TaskStatus OnUpdate()
         {
-            movement.Direction = MoveDirection(trend);
-            return TaskStatus.Success;
-        }
-
-        private Vector2 MoveDirection(MoveTrends trend)
-        {
-            Vector2 direction;
-            switch (trend)
+            if (coldDownTimer <= 0)
             {
-                case MoveTrends.Away:
-                    direction = transform.position - targetGameObject.Value.transform.position;
-                    break;
-                default:
-                    direction = targetGameObject.Value.transform.position - transform.position;
-                    break;
+                attackAction.Target = targetGameObject.Value;
+                attackAction.TakeAction(entity);
+                coldDownTimer = attack.Interval;
+                return TaskStatus.Success;
             }
-            direction = direction.normalized;
-            return direction;
+            else
+            {
+                coldDownTimer -= Time.deltaTime;
+                return TaskStatus.Failure;
+            }
         }
     }
 
