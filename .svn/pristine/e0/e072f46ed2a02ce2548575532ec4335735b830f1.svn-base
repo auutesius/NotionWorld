@@ -1,8 +1,0 @@
-ID,Health,MaxHealth,Speed,Attack,Interval,Range,AttackType,BulletSpeed,Energy,MaxEnergy,Recharge,Skill
-Player,100,100,2,1,2,5,BombBullet,0.5,8,10,7,RotateAttackSkill BombSkill RushSkill 
-Fool,150,150,0.3125,15,1,0.3125,normalMelee,1,,,,
-RevolverMan,120,120,0.625,15,1,10,normalGunBullet,1,,,,
-ShotgunMan,110,110,0.625,10,1,10,normalGunBullet,1,,,,
-Knight,225,225,0.9375,20,2,0.625,normalMelee,1,,,,
-Octopus,80,80,0.625,15,1,0.3125,normalMelee,1,,,,
-MegaOctopus,2000,2000,,,,,,,,,,
