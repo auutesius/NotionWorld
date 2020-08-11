@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4969516524342461221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3072511281296326483}
-  m_Layer: 0
-  m_Name: Weapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3072511281296326483
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969516524342461221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8719106694267968164}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8419133486239444575
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8719106694267968164}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3048632858211654792
 MeshFilter:
@@ -136,8 +106,8 @@ GameObject:
   - component: {fileID: 8332439019110820526}
   - component: {fileID: 5327778825472561464}
   - component: {fileID: 7357487811042418956}
-  - component: {fileID: -38661345450833238}
-  - component: {fileID: 1288900310568723193}
+  - component: {fileID: 6636135182521520150}
+  - component: {fileID: 1872557587692954221}
   m_Layer: 0
   m_Name: Octopus
   m_TagString: Enemies
@@ -156,7 +126,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3072511281296326483}
   - {fileID: 8578397005299615751}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -233,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f665f500e821d4ab5214d973f70ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 4969516524342461221}
+  weapon: {fileID: 8719106694267968191}
   AttackTag: Player
   forward: {x: 0, y: 0, z: 0}
   IsSkilling: 0
@@ -250,28 +219,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSkilling: 0
---- !u!50 &-38661345450833238
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!95 &6636135182521520150
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8719106694267968191}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!114 &1288900310568723193
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a05b8f8a20d50046ba783193a23eeb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1872557587692954221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,12 +247,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8719106694267968191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5f52eb402956c43bfe4108b98d83f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 819bf2e5c1191d3448952a3696435a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 0}
-  HealthSlider: {fileID: 0}
-  EnergySlider: {fileID: 0}
-  AimImage: {fileID: 0}
-  AimRange: {fileID: 0}
-  HasArrowPointer: 1
+  AttackInternal: 0.4
+  PreAimInternal: 0.3
