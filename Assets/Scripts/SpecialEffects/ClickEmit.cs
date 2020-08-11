@@ -14,7 +14,7 @@ public class ClickEmit : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("press mouse .");
-            ripple.Emit(new Vector2(10.0f,10.0f));
+            ripple.Emit(new Vector2(0.5f,1f));
         }
 	}
 }

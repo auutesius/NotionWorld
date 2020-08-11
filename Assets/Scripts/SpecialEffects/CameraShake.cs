@@ -42,4 +42,8 @@ public class CameraShake : MonoBehaviour {
             camTransform.localPosition = originalPos;
         }
     }
+
+    public void Shake(float time){
+        shakeTime = time;
+    }
 }
