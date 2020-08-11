@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Capabilities;
-using UnityEditor.UIElements;
 using System.Threading.Tasks;
 
 namespace NotionWorld.Entities

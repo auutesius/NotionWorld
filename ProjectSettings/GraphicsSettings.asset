@@ -35,6 +35,15 @@ GraphicsSettings:
   - {fileID: 16001, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 16003, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 17000, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10783, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 4800000, guid: 1c0e0070a818e7347afbe48f325a264c, type: 3}
+  - {fileID: 4800000, guid: 9d2cd7c332c995448bd79b8c2564b862, type: 3}
+  - {fileID: 4800000, guid: be56ee3d00ac41246a2195a098f74dd7, type: 3}
+  - {fileID: 4800000, guid: 1ab3a40946bc1394e8ed35facce21f34, type: 3}
+  - {fileID: 4800000, guid: e115553b62822d54a801bb20c58fdd73, type: 3}
+  - {fileID: 4800000, guid: 25c6d8861a7f09845b9f6068eaae0f15, type: 3}
+  - {fileID: 4800000, guid: 4bbd84b7b94bc1c4fa126ecad69c755d, type: 3}
+  - {fileID: 4800000, guid: 361148e53b249684da707902e23d14b2, type: 3}
   m_PreloadedShaders: []
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
     type: 0}
@@ -59,5 +68,5 @@ GraphicsSettings:
   m_AlbedoSwatchInfos: []
   m_LightsUseLinearIntensity: 0
   m_LightsUseColorTemperature: 0
-  m_LogWhenShaderIsCompiled: 0
+  m_LogWhenShaderIsCompiled: 1
   m_AllowEnlightenSupportForUpgradedProject: 1
