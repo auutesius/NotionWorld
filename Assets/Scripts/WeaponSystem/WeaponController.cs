@@ -29,7 +29,7 @@ public class WeaponController : MonoBehaviour
 
     public void SetCollider(bool t)
     {
-        weapon.GetComponent<BoxCollider2D>().enabled = t;
+        weapon.GetComponent<PolygonCollider2D>().enabled = t;
     }
 
     private void Update()
