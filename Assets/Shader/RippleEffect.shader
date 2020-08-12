@@ -10,10 +10,7 @@
         _Drop1("Drop 1", Vector) = (0.49, 0.5, 0, 0)
         _Drop2("Drop 2", Vector) = (0.50, 0.5, 0, 0)
         _Drop3("Drop 3", Vector) = (0.51, 0.5, 0, 0)
-	    _Top("Top", Float) = 1.0
-        _Bottom("Bottom", Float) = 0.0
-        _Left("Left", Float) = 0.0
-        _Right("Right", Float) = 1.0
+		_SeaLevel("SeaVevel", Float) = -1.0
     }
     CGINCLUDE
     #include "UnityCG.cginc"
@@ -27,50 +24,34 @@
     float3 _Drop1;//涟漪1
     float3 _Drop2;//涟漪2
     float3 _Drop3;//涟漪3
-    float _Top;
-    float _Bottom;
-    float _Left;
-    float _Right;
+	float _SeaLevel;
 
     float wave(float2 position, float2 origin, float time) //当前点位置, 出发点位置, 时间
     {
         float d = length(position - origin);
         float t = time - d * _Params1.z;
-		if (_Top > 0 && position.y > _Top)// 超过Top则不再扩散
-		{
-			return 0;
-		}
-        if (_Bottom > 0 && _Bottom < _Top && position.y < _Bottom)// 低于Bottom则不再扩散
-		{
-			return 0;
-		}
-        if (_Right > 0 && position.x  > _Right * 0.6)// 超过Right则不再扩散
-		{
-			return 0;
-		}
-        if (_Left > 0 && _Left < _Right && position.x  < _Left * 0.6)// 低于Left则不再扩散
+		if (_SeaLevel > 0 && position.y > _SeaLevel)// 超过海平面则不再扩散
 		{
 			return 0;
 		}
 		return (tex2D(_GradTex, float2(t, 0)).a - 0.5f) * 2;
-        
     }
-    float allwave(float2 position)// 计算当前点在三个涟漪下的共同作用效果
+    float allwave(float2 position)// 计算当前点在三个涟漪下的共同作用效果（因为涟漪之间可能相交）
     {
 		return
 			wave(position, _Drop1.xy, _Drop1.z) +
 			wave(position, _Drop2.xy, _Drop2.z) +
 			wave(position, _Drop3.xy, _Drop3.z);
     }
+	//伪代码 [RippleEffect.shader]  
     half4 frag(v2f_img i) : SV_Target
     {
         const float2 dx = float2(0.01f, 0);//delta x
         const float2 dy = float2(0, 0.01f);// delta y
-
         float2 p = i.uv * _Params1.xy;//根据比例变换uv
         float w = allwave(p);//振幅，用振幅来对当前点做UV上面的偏移，即可产生涟漪效果
         float2 dw = float2(allwave(p + dx) - w, allwave(p + dy) - w);//xy上振幅
-        float2 duv = dw * _Params2.xy * 0.2f * _Params2.z; //uv上振幅
+        float2 duv = dw * _Params2.xy * 0.2f * _Params2.z; //ux上振幅
         half4 c = tex2D(_MainTex, i.uv + duv);//在原图上做偏移
         float fr = pow(length(dw) * 3 * _Params2.w, 3);
         return lerp(c, _Reflection, fr);//lerp来实现反射效果,优化表现

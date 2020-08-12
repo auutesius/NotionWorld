@@ -4,10 +4,7 @@ using System.Collections;
 public class RippleEffect : MonoBehaviour
 {
     public Camera c;
-    public float top = 1.0f;
-    public float bottom = 0.0f;
-    public float left = 0.0f;
-    public float right = 1.0f;
+    public float seaLevel = -1.0f;
     public AnimationCurve waveform = new AnimationCurve(
         new Keyframe(0.00f, 0.50f, 0, 0),new Keyframe(0.05f, 1.00f, 0, 0),new Keyframe(0.15f, 0.10f, 0, 0),new Keyframe(0.25f, 0.80f, 0, 0),
         new Keyframe(0.35f, 0.30f, 0, 0),new Keyframe(0.45f, 0.60f, 0, 0),new Keyframe(0.55f, 0.40f, 0, 0),new Keyframe(0.65f, 0.55f, 0, 0),
@@ -19,16 +16,16 @@ public class RippleEffect : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float reflectionStrength = 0.7f;//反射效果强度，可以理解为涟漪的阴影
     [Range(0.0f, 3.0f)]
-    public float waveSpeed = 1.00f;//传播速度
-    
-    public Shader shader;
+    public float waveSpeed = 1.25f;//传播速度
+    [SerializeField]
+    Shader shader;
     class Droplet
     {
         Vector2 position;
         float time = 1000.0f;
         public Droplet() { }
         public void Reset(Vector2 pos){
-            position = new Vector2(0.5f, 0.5f);//涟漪起点
+            position = new Vector2(0.5f, 0.5f);
             time = 0;
         }
         public void Update(){
@@ -48,16 +45,16 @@ public class RippleEffect : MonoBehaviour
         material.SetVector("_Drop1", droplets[0].MakeShaderParameter(c.aspect));
         material.SetVector("_Drop2", droplets[1].MakeShaderParameter(c.aspect));
         material.SetVector("_Drop3", droplets[2].MakeShaderParameter(c.aspect));
-        material.SetFloat("_Top", top);
-        material.SetFloat("_Bottom", bottom);
-        material.SetFloat("_Left", left);
-        material.SetFloat("_Right", right);
+        material.SetFloat("_SeaLevel", seaLevel);
         material.SetColor("_Reflection", reflectionColor);
         material.SetVector("_Params1", new Vector4(c.aspect, 1, 1 / waveSpeed, 0));
         material.SetVector("_Params2", new Vector4(1, 1 / c.aspect, refractionStrength, reflectionStrength));
     }
     void Start()
     {
+        //c = GetComponent<Camera>();//获取相机组件
+        if (c == null)
+            Debug.Log("error  it is null");
         droplets = new Droplet[3];
         for(int i = 0;i < droplets.Length;i++)
         {
@@ -87,18 +84,9 @@ public class RippleEffect : MonoBehaviour
     {
         Graphics.Blit(source, destination, material); //效果作用于画面
     }
-    public void SetTop(float _top)
+    public void SetSeaLevel(float seaLevel_)
     {
-        top = _top;
-    }public void SeBottom(float _bottom)
-    {
-        top = _bottom;
-    }public void SetLeft(float _left)
-    {
-        top = _left;
-    }public void SetRight(float _right)
-    {
-        top = _right;
+        seaLevel = seaLevel_;
     }
     public void Emit(Vector2 pos)// call this to emit a ripple
     {
