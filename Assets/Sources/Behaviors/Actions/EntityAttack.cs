@@ -16,35 +16,41 @@ namespace NotionWorld.Behaviors
         public SharedGameObject targetGameObject;
 
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Attack Animator.")]
-        public SharedGameObject animator;
+        public SharedGameObject animatorObject;
 
         private Entity entity;
 
         private Attack attack;
 
-        private EntityAttackAction attackAction;
+        private Animator animator;
+
+        private EntityAttackFragment attackFragment = new EntityAttackFragment();
+
+        private AnimatorParameterFragment animatorFragment = new AnimatorParameterFragment()
+        {
+            Name = "IsAttacking",
+            Value = true
+        };
 
         private float coldDownTimer;
 
         public override void OnAwake()
         {
             entity = Owner.GetComponent<Entity>();
-
-            attackAction = new EntityAttackAction();
-            attackAction.AttackAnimator = animator.Value.GetComponent<Animator>();
         }
 
         public override void OnStart()
         {
             attack = entity.GetCapability<Attack>();
+
+            animator = animatorObject.Value.GetComponent<Animator>();
         }
 
         public override TaskStatus OnUpdate()
         {
             if (coldDownTimer <= 0)
             {
-                attackAction.Target = targetGameObject.Value;
-                attackAction.TakeAction(entity);
+                Attack();
                 coldDownTimer = attack.Interval;
                 return TaskStatus.Success;
             }
@@ -53,6 +59,14 @@ namespace NotionWorld.Behaviors
                 coldDownTimer -= Time.deltaTime;
                 return TaskStatus.Failure;
             }
+        }
+
+        private void Attack()
+        {
+            attackFragment.Target = targetGameObject.Value;
+            attackFragment.TakeEffect(entity);
+            animatorFragment.Animator = animator;
+            animatorFragment.TakeEffect();
         }
     }
 
