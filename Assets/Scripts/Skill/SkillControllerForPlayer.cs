@@ -46,6 +46,7 @@ public class SkillControllerForPlayer : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(ValidTime);
 
+        entity.GetCapability<Energy>().Value = 0;
         mask.SetActive(false);
         isWorking = false;
         transform.GetChild(1).gameObject.SetActive(isWorking);
@@ -60,10 +61,11 @@ public class SkillControllerForPlayer : MonoBehaviour
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
             skill.TakeAction(entity);
 
-
+            StopAllCoroutines();
             mask.SetActive(false);
             isWorking = false;
             transform.GetChild(1).gameObject.SetActive(isWorking);
+            entity.GetCapability<Energy>().Value = 0;
             Time.timeScale = 1f;
         }
         else

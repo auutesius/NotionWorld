@@ -137,10 +137,19 @@ public class WeaponController : MonoBehaviour
             if (collision.gameObject.CompareTag(AttackTag))
             {
                 HealthModifier healthModifier = new HealthModifier(-25);    //角色定值技能()写死
-                GravitationModifier gravitationModifier = new GravitationModifier(transform.position, 0.2f);
+                MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
+
+                moveTowardFragment.Direction = ((collision.transform.position - transform.position).normalized);
+                moveTowardFragment.InternalTime = 0.5f;
+                moveTowardFragment.Speed = 0.4f;
+                moveTowardFragment.TakeEffect(collision.GetComponent<Entity>());
+
+                /*
+                GravitationModifier gravitationModifier = new GravitationModifier(transform.position, 0.2f,1);
                 healthModifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
                 gravitationModifier.Center = (collision.transform.position - transform.position).normalized + collision.transform.position;
                 gravitationModifier.TakeEffect(collision.transform.gameObject.GetComponent<Entity>());
+                */
             }
         }
     }

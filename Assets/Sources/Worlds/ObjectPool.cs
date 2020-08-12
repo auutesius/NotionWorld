@@ -31,6 +31,40 @@ namespace NotionWorld.Worlds
         {
             //结果对象
             GameObject result = null;
+
+            do
+            {
+                Queue<GameObject> pObjQueue = null;
+                if (!pool.TryGetValue(objName, out pObjQueue) || pObjQueue.Count <= 0)
+                    break;
+                // 获取结果
+                result = pObjQueue.Dequeue();
+            } while (false);
+
+            // 若结果为空则生成一个
+            if (result == null)
+            {
+                GameObject prefab = null;
+                if (prefabs.TryGetValue(objName, out prefab)){ }
+                else
+                {
+                    //加载预设体
+                    prefab = Resources.Load<GameObject>("Prefabs/" + path + "/" + objName);
+                    //更新字典
+                    prefabs.Add(objName, prefab);
+                }
+                //生成
+                result = UnityEngine.Object.Instantiate(prefab);
+                //改名（去除 Clone）
+                result.name = objName;
+            }
+            if (result != null)
+                result.SetActive(true);
+            else
+                throw new System.ArgumentException("objName is out of consider.");
+            return result;
+
+            /*
             //判断是否有该名字的对象池
             if (pool.ContainsKey(objName))
             {
@@ -39,10 +73,6 @@ namespace NotionWorld.Worlds
                 {
                     //获取结果
                     result = pool[objName].Dequeue();
-                    if (result == null)
-                    {
-                        return null;
-                    }
                     //激活对象
                     result.SetActive(true);
                     //返回结果
@@ -72,6 +102,7 @@ namespace NotionWorld.Worlds
             result.SetActive(true);
             //返回
             return result;
+            */
         }
 
         /// <summary>

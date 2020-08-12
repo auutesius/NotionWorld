@@ -78,7 +78,7 @@ public class BombBullet : Bullet
             {
                 foreach (var t in targets)
                 {
-                    gravitationModifier = new GravitationModifier(transform.position, GravitationInternal);
+                    gravitationModifier = new GravitationModifier(transform.position, GravitationInternal, 2);
                     gravitationModifier.TakeEffect(t.GetComponent<Entity>());
                     AnimatorParameterFragment animator = new AnimatorParameterFragment();
                     for (int i = 0; i < 3; i++)

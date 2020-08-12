@@ -9,17 +9,18 @@ namespace NotionWorld.Entities
     public sealed class GravitationModifier : Modifier
     {
         public float GravitationInternal;
-
+        public float GravitationPower;
         // 引力中心
         public Vector3 Center
         {
             get; set;
         }
 
-        public GravitationModifier(Vector3 center, float skillInternal)
+        public GravitationModifier(Vector3 center, float skillInternal, float power)
         {
             Center = center;
             GravitationInternal = skillInternal;
+            GravitationPower = power;
         }
 
         public override void TakeEffect(Entity entity)
@@ -31,11 +32,12 @@ namespace NotionWorld.Entities
         private async void Delay(int ms, Entity actor)
         {
             int step = 0;
-            Vector2 perDistance = (Center - actor.transform.position) / (GravitationInternal * 1000 / ms);
+            
             while (step < GravitationInternal * 1000 / ms)
             {
                 await Task.Delay(ms);
-                actor.transform.Translate(perDistance);
+                Vector2 perDistance = (Center - actor.transform.position) / (GravitationInternal * 1000 / ms);
+                actor.transform.Translate(perDistance * GravitationPower);
                 step++;
             }
         }

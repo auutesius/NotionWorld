@@ -6,4 +6,5 @@ public class AnimatorTimeInfo:MonoBehaviour
 {
     public float AttackInternal;
     public float PreAimInternal;
+    public float SkillPreInternal;
 }
