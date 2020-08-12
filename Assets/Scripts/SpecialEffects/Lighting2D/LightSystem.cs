@@ -86,7 +86,7 @@ namespace Lighting2D
                 cmd.SetGlobalInt("_SceneView", 0);
             }
 #endif
-
+            cmd.SetGlobalInt("_SceneView", 1);
             var diffuse = Shader.PropertyToID("_Diffuse");
             cmd.GetTemporaryRT(diffuse, -1, -1, 0, FilterMode.Bilinear, RenderTextureFormat.Default, RenderTextureReadWrite.Default, 1);
             cmd.Blit(BuiltinRenderTextureType.CameraTarget, diffuse);
