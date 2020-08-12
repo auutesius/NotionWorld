@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5249618474917726394
 Transform:
   m_ObjectHideFlags: 0
@@ -230,19 +230,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0041656494
-      value: 0.20990753
-      inSlope: 0.002347703
-      outSlope: 0.002347703
+      time: -20.226608
+      value: 1.9952393
+      inSlope: 0.00024636573
+      outSlope: 0.00024636573
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0.21226501
-      inSlope: 0.002347703
-      outSlope: 0.002347703
+      time: 10.121796
+      value: 2.002716
+      inSlope: 0.00024636573
+      outSlope: 0.00024636573
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -251,10 +251,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Speed: 1
-  AutoRecycleTime: 0.08
+  AutoRecycleTime: 1
   Scale: {x: 1, y: 1, z: 1}
   HitAudioSource: {fileID: 5517540041709914817}
-  HitEffect: 
+  HitEffect: Slash
   DestoryEffect: 
 --- !u!61 &5522420392789793821
 BoxCollider2D:
@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &5517540041709914821
 Rigidbody2D:
@@ -302,7 +302,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &1379616832204935422
 MonoBehaviour:
   m_ObjectHideFlags: 0

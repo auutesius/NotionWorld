@@ -32,6 +32,7 @@ namespace NotionWorld.Actions
             if(Value == null)
             {
                 Animator.SetTrigger(Name);
+                return;
             }
             Type type = Value.GetType();
 
