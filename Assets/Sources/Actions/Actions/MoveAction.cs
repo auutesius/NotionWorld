@@ -13,6 +13,8 @@ namespace NotionWorld.Actions
         }
 
         private MoveFragment move;
+        private AnimatorParameterFragment animatorFragment;
+        private AnimatorDirFragment dir;
 
         public override void TakeAction(Entity entity)
         {
@@ -22,6 +24,27 @@ namespace NotionWorld.Actions
             }
             move.Movement = Movement;
             move.TakeEffect(entity);
+
+            if (animatorFragment == null)
+            {
+                animatorFragment = new AnimatorParameterFragment();
+                animatorFragment.Name = "Move";
+                animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
+            }
+            if (animatorFragment.Animator != null)
+            {
+                animatorFragment.Value = Movement.magnitude > 0.01f;
+                animatorFragment.TakeEffect();
+            }
+
+            if (dir == null)
+            {
+                dir = new AnimatorDirFragment();
+            }
+            dir.Movement = Movement;
+            dir.TakeEffect(entity);
+
+
         }
     }
 
