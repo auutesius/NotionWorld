@@ -31,19 +31,17 @@ namespace NotionWorld.Actions
                 animatorFragment.Name = "Move";
                 animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
             }
-            if (animatorFragment.Animator != null)
-            {
-                animatorFragment.Value = Movement.magnitude > 0.01f;
-                animatorFragment.TakeEffect();
-            }
-
             if (dir == null)
             {
                 dir = new AnimatorDirFragment();
             }
-            dir.Movement = Movement;
-            dir.TakeEffect(entity);
-
+            if (animatorFragment.Animator != null)
+            {
+                animatorFragment.Value = Movement.magnitude > 0.01f;
+                animatorFragment.TakeEffect();
+                dir.Movement = Movement;
+                dir.TakeEffect(entity);
+            }
 
         }
     }
