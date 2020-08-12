@@ -14,7 +14,6 @@ public class SkillControllerForPlayer : MonoBehaviour
     private bool isWorking;
     public Entity entity;
     private SkillAction skill;
-
     public void SetSkillAvailable(bool s)
     {
         if (!isWorking)
@@ -42,6 +41,7 @@ public class SkillControllerForPlayer : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(isWorking);
         mask.SetActive(true);
 
+
         yield return new WaitForSecondsRealtime(ValidTime);
 
         mask.SetActive(false);
@@ -57,6 +57,7 @@ public class SkillControllerForPlayer : MonoBehaviour
             skill = new SkillAction();
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
             skill.TakeAction(entity);
+
 
             mask.SetActive(false);
             isWorking = false;
