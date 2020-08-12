@@ -22,13 +22,15 @@ public abstract class SkillBullet : MonoBehaviour
 
     protected Modifier[] targetModifiers;
     
-    public virtual void OnSkillReleased()
+    protected virtual void OnSkillReleased()
     {
 
     }
 
-    public virtual void OnSkillHit()
+    protected virtual void OnSkillHit()
     {
 
     }
+
+    public abstract void Launch(Vector3 position, Vector3 direction);
 }

@@ -6,6 +6,7 @@ using NotionWorld.Entities;
 using UnityEngine;
 using NotionWorld.Actions;
 using NotionWorld.Capabilities;
+using NotionWorld.Modifiers;
 
 namespace NotionWorld.Behaviors
 {
@@ -23,27 +24,36 @@ namespace NotionWorld.Behaviors
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Move Trend of GameObject.")]
         public MoveTrends trend;
 
-        private Entity entity;
-
         private Speed speed;
 
-        private MoveAction moveAction;
+        private AnimatorTriggerModifier animatorModifier;
+
+        private PositionModifier positionModifier;
 
         public override void OnAwake()
         {
-            moveAction = new MoveAction();
-            entity = Owner.GetComponent<Entity>();
+            var animator = Owner.GetComponent<Animator>();
+
+            animatorModifier = new AnimatorTriggerModifier()
+            {
+                Animator = animator,
+                Name = "Walk"
+            };
+
+            positionModifier = new PositionModifier()
+            {
+                Transform = transform,
+            };
         }
 
         public override void OnStart()
         {
-            speed = entity.GetCapability<Speed>();
+            speed = Owner.GetComponent<Entity>().GetCapability<Speed>();
         }
 
         public override TaskStatus OnUpdate()
         {
-            moveAction.Movement = Time.deltaTime * MoveDirection(trend) * speed.Value;
-            moveAction.TakeAction(entity);
+            TakeAction();
             return TaskStatus.Success;
         }
 
@@ -61,6 +71,14 @@ namespace NotionWorld.Behaviors
             }
             direction = direction.normalized;
             return direction;
+        }
+
+        private void TakeAction()
+        {
+            positionModifier.DeltaPosition = Time.deltaTime * MoveDirection(trend) * speed.Value;
+            positionModifier.TakeEffect();
+
+            animatorModifier.TakeEffect();
         }
     }
 

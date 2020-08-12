@@ -6,6 +6,7 @@ using NotionWorld.Entities;
 using UnityEngine;
 using NotionWorld.Actions;
 using NotionWorld.Capabilities;
+using NotionWorld.Modifiers;
 
 namespace NotionWorld.Behaviors
 {
@@ -20,8 +21,6 @@ namespace NotionWorld.Behaviors
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Move Trend of GameObject.")]
         public MoveTrends trend;
 
-        private Entity entity;
-
         private Speed speed;
 
         public float targetDisturbance = 2.8F;
@@ -32,22 +31,34 @@ namespace NotionWorld.Behaviors
 
         private float currentTime = float.MaxValue;
 
-        private MoveFragment moveFragment;
-
         public enum MoveTrends
         {
             Towards, Away
         }
 
+        private AnimatorTriggerModifier animatorModifier;
+
+        private PositionModifier positionModifier;
+
         public override void OnAwake()
         {
-            moveFragment = new MoveFragment();
-            entity = Owner.GetComponent<Entity>();
+            var animator = Owner.GetComponent<Animator>();
+
+            animatorModifier = new AnimatorTriggerModifier()
+            {
+                Animator = animator,
+                Name = "Walk"
+            };
+
+            positionModifier = new PositionModifier()
+            {
+                Transform = transform,
+            };
         }
 
         public override void OnStart()
         {
-            speed = entity.GetCapability<Speed>();
+            speed = Owner.GetComponent<Entity>().GetCapability<Speed>();
         }
 
         public override TaskStatus OnUpdate()
@@ -60,8 +71,7 @@ namespace NotionWorld.Behaviors
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
-                moveFragment.Movement = Time.deltaTime * direction * speed.Value;
-                moveFragment.TakeEffect(entity);
+                TakeAction();
                 return TaskStatus.Running;
             }
             else
@@ -93,6 +103,14 @@ namespace NotionWorld.Behaviors
             direction += horizontal;
             direction = direction.normalized;
             return direction;
+        }
+
+        private void TakeAction()
+        {
+            positionModifier.DeltaPosition = Time.deltaTime * direction * speed.Value;
+            positionModifier.TakeEffect();
+
+            animatorModifier.TakeEffect();
         }
     }
 

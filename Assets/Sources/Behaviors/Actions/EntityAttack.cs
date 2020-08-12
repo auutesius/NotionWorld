@@ -6,6 +6,7 @@ using NotionWorld.Entities;
 using UnityEngine;
 using NotionWorld.Actions;
 using NotionWorld.Capabilities;
+using NotionWorld.Modifiers;
 
 namespace NotionWorld.Behaviors
 {
@@ -22,36 +23,35 @@ namespace NotionWorld.Behaviors
 
         private Attack attack;
 
-        private Animator animator;
-
         private EntityAttackFragment attackFragment = new EntityAttackFragment();
 
-        private AnimatorParameterFragment animatorFragment = new AnimatorParameterFragment()
-        {
-            Name = "IsAttacking",
-            Value = true
-        };
+        private AnimatorTriggerModifier animatorModifier;
 
         private float coldDownTimer;
 
         public override void OnAwake()
         {
             entity = Owner.GetComponent<Entity>();
+
+             var animator = animatorObject.Value.GetComponent<Animator>();
+
+            animatorModifier = new AnimatorTriggerModifier()
+            {
+                Animator = animator,
+                Name = "Attack"
+            };
         }
 
         public override void OnStart()
         {
-            attack = entity.GetCapability<Attack>();
-
-            animator = animatorObject.Value.GetComponent<Animator>();
+            attack = entity.GetCapability<Attack>();         
         }
 
         public override TaskStatus OnUpdate()
         {
             if (coldDownTimer <= 0)
             {
-                Attack();
-                coldDownTimer = attack.Interval;
+                Attack();              
                 return TaskStatus.Success;
             }
             else
@@ -65,8 +65,10 @@ namespace NotionWorld.Behaviors
         {
             attackFragment.Target = targetGameObject.Value;
             attackFragment.TakeEffect(entity);
-            animatorFragment.Animator = animator;
-            animatorFragment.TakeEffect();
+
+            animatorModifier.TakeEffect();
+
+            coldDownTimer = attack.Interval;
         }
     }
 
