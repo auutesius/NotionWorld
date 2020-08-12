@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8414c122f1aa0d340b41ca51c93e17e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightShadows: 0
+  LightShadows: 2
   ShadowSmooth: 2
   SmoothRadius: 0
   LightVolumn: 1
