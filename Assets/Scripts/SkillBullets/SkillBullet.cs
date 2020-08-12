@@ -28,5 +28,5 @@ public abstract class SkillBullet : MonoBehaviour
 
     }
 
-    public abstract void Launch(Vector3 position, Vector3 direction);
+    public abstract void Launch(Vector2 position, Vector2 direction);
 }

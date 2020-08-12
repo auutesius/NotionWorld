@@ -58,8 +58,8 @@ namespace NotionWorld.Behaviors
             bullet.Source = Owner.gameObject;
             bullet.Target = targetGameObject.Value;
 
-            Vector3 position = animatorModifier.Animator.transform.position;
-            Vector3 direction = targetGameObject.Value.transform.position - position;
+            Vector2 position = animatorModifier.Animator.transform.position;
+            Vector2 direction = ((Vector2)targetGameObject.Value.transform.position - position);
             direction = direction.normalized;
 
             bullet.Launch(position, direction);

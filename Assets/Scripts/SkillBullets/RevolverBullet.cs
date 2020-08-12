@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Modifiers;
@@ -7,15 +7,13 @@ using NotionWorld.Capabilities;
 using NotionWorld.Worlds;
 using HealthModifier = NotionWorld.Modifiers.HealthModifier;
 
-public sealed class Melee : SkillBullet
+public sealed class RevolverBullet : SkillBullet
 {
     public int damage;
 
-    public float radius;
+    public float speed;
 
     public float time;
-
-    public float angle;
 
     private HealthModifier healthModifier;
 
@@ -37,44 +35,46 @@ public sealed class Melee : SkillBullet
     {
         transform.position = position;
         transform.forward = direction;
-        StartCoroutine(SweepCorotinue());
+        StartCoroutine(MoveCorotinue());
     }
 
-    private IEnumerator SweepCorotinue()
+    private IEnumerator MoveCorotinue()
     {
         WaitForFixedUpdate wait = new WaitForFixedUpdate();
 
         float timer = time;
-        float anglePerFrame = angle / time * Time.fixedDeltaTime;
-        float halfAngle = angle / 2;
 
-        transform.Rotate(-halfAngle, 0, 0);
+        Vector2 deltaForward = transform.forward * speed * Time.fixedDeltaTime;
+        Vector2 position = transform.position;
 
         while (timer > 0)
         {
-            var hits = Physics2D.RaycastAll(transform.position, transform.forward);
-            foreach (var hit in hits)
-            {
-                var gameObject = hit.transform.gameObject;
-                if (gameObject == Target)
-                {
-                    var entity = gameObject.GetComponent<Entity>();
-                    if (entity != null)
-                    {
-                        healthModifier.Health = entity.GetCapability<Health>();
-                    }
-                    animatorTrigger.Animator = gameObject.GetComponent<Animator>();
-
-                    TakeEffect();
-                    timer = 0;
-                }
-            }
+            transform.position = position;
+            position += deltaForward;
             timer -= Time.fixedDeltaTime;
-            transform.Rotate(anglePerFrame, 0, 0);
             yield return wait;
         }
 
         ObjectPool.RecycleObject(this.gameObject);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        var gameObject = other.gameObject;
+
+        if (gameObject == Target)
+        {
+            var entity = gameObject.GetComponent<Entity>();
+            if (entity != null)
+            {
+                healthModifier.Health = entity.GetCapability<Health>();
+            }
+            animatorTrigger.Animator = gameObject.GetComponent<Animator>();
+
+            TakeEffect();
+
+            ObjectPool.RecycleObject(this.gameObject);
+        }
     }
 
     private void TakeEffect()
