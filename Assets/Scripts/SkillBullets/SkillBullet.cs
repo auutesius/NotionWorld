@@ -6,18 +6,29 @@ using NotionWorld.Entities;
 
 public abstract class SkillBullet : MonoBehaviour
 {
-    public Entity Source
+    public GameObject Source
     {
         get; set;
     }
 
-    public object[] SourceModifiers
+    public GameObject Target
     {
         get; set;
     }
 
-    public object[] TargetModifiers
+    public float coldDown;
+
+    protected Modifier[] sourceModifiers;
+
+    protected Modifier[] targetModifiers;
+    
+    public virtual void OnSkillReleased()
     {
-        get; set;
+
+    }
+
+    public virtual void OnSkillHit()
+    {
+
     }
 }

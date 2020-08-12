@@ -51,9 +51,9 @@ public class Bullet : MonoBehaviour
     {
         if (IsNotRecycled)
         {
-            Nowtime += Time.deltaTime;
+            Nowtime += Time.fixedDeltaTime;
             NowSpeed = SpeedRatio.Evaluate(Nowtime) * Speed;
-            transform.Translate(Vector3.up * NowSpeed);
+            transform.Translate(Vector3.up * NowSpeed * Time.fixedDeltaTime);
         }
     }
 

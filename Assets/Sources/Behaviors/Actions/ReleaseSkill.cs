@@ -10,7 +10,7 @@ using NotionWorld.Capabilities;
 namespace NotionWorld.Behaviors
 {
     [TaskCategory("NotionWorld")]
-    public sealed class UseSkill : Action
+    public sealed class ReleaseSkill : Action
     {
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Skill Want to use.")]
         public string SkillID;
