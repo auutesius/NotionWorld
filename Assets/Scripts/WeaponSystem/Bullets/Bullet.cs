@@ -5,6 +5,7 @@ using UnityEngine;
 using NotionWorld.Worlds;
 using NotionWorld.Entities;
 using NotionWorld.Capabilities;
+using NotionWorld.Actions;
 
 public class Bullet : MonoBehaviour
 {
@@ -93,7 +94,7 @@ public class Bullet : MonoBehaviour
             {
                 GameObject shootHitEffect = ObjectPool.GetObject(HitEffect, "Effects");
                 // shootHitEffect.transform.Rotate(m_euler);
-                shootHitEffect.transform.position = transform.position + transform.up.normalized * 0.5f;
+                shootHitEffect.transform.position = transform.position + transform.up.normalized * 0.5f + Vector3.forward * -5f;
             }
             if (HitAudioSource != null)
             {
@@ -124,6 +125,15 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag(AttackTag))
             {
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
+                AnimatorParameterFragment animator = new AnimatorParameterFragment();
+                animator.Animator = collision.transform.GetChild(0).GetComponent<Animator>();
+                animator.Name = "isHit";
+                animator.TakeEffect();
+                if (collision.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
+                {
+                    animator.Name = "isDie";
+                    animator.TakeEffect();
+                }
             }
         }
         HitRecycleNow();

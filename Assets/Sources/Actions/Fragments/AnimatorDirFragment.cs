@@ -15,7 +15,7 @@ namespace NotionWorld.Actions
 
         public override void TakeEffect(Entity entity)
         {
-            Animator animator = entity.transform.GetChild(1).GetComponent<Animator>();
+            Animator animator = entity.transform.GetChild(0).GetComponent<Animator>();
             if (animator == null) { return; }
             // { throw new InvalidOperationException("There is no Animator on Image Sprite."); }
             if (animator.name != "Image") { return;  }

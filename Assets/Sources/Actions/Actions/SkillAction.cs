@@ -44,7 +44,7 @@ namespace NotionWorld.Actions
             {
                 // 动画展示
                 AnimatorParameterFragment animatorFragment = new AnimatorParameterFragment();
-                animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
+                animatorFragment.Animator = entity.transform.GetChild(0).GetComponent<Animator>();
                 animatorFragment.Name = "Throw";
                 animatorFragment.TakeEffect();
 
@@ -88,7 +88,7 @@ namespace NotionWorld.Actions
 
                 // 人物动画
                 AnimatorParameterFragment animatorFragment = new AnimatorParameterFragment();
-                animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
+                animatorFragment.Animator = entity.transform.GetChild(0).GetComponent<Animator>();
                 animatorFragment.Name = "Rush";
                 animatorFragment.TakeEffect();
             }

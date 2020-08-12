@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3257317862516539112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2518114597255669747}
   m_RootOrder: 1
@@ -254,8 +254,8 @@ MonoBehaviour:
   AutoRecycleTime: 5
   Scale: {x: 1, y: 1, z: 1}
   HitAudioSource: {fileID: 5517540041709914817}
-  HitEffect: MuzzleFlashGreen
-  DestoryEffect: MuzzleFlashRed
+  HitEffect: Explosion_Red
+  DestoryEffect: Explosion_Red
 --- !u!61 &5522420392789793821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 6750948043035557820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2518114597255669747}
   m_RootOrder: 0

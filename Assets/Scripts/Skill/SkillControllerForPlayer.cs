@@ -14,6 +14,7 @@ public class SkillControllerForPlayer : MonoBehaviour
     private bool isWorking;
     public Entity entity;
     private SkillAction skill;
+    public RippleEffect ripple;
     public void SetSkillAvailable(bool s)
     {
         if (!isWorking)
@@ -25,6 +26,7 @@ public class SkillControllerForPlayer : MonoBehaviour
 
     public void StartSkillTime()
     {
+        ripple.Emit(new Vector2(0f,0f));
         StartCoroutine(BulletTimeCD());
     }
 

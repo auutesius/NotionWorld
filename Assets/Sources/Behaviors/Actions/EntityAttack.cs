@@ -33,7 +33,7 @@ namespace NotionWorld.Behaviors
         {
             entity = Owner.GetComponent<Entity>();
 
-             var animator = animatorObject.Value.GetComponent<Animator>();
+             var animator = animatorObject.Value.transform.GetChild(0).GetComponent<Animator>();
 
             animatorModifier = new AnimatorTriggerModifier()
             {

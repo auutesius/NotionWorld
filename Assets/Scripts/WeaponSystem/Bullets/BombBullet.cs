@@ -5,6 +5,7 @@ using UnityEngine;
 using NotionWorld.Worlds;
 using NotionWorld.Entities;
 using NotionWorld.Capabilities;
+using NotionWorld.Actions;
 
 public class BombBullet : Bullet
 {
@@ -79,10 +80,19 @@ public class BombBullet : Bullet
                 {
                     gravitationModifier = new GravitationModifier(transform.position, GravitationInternal);
                     gravitationModifier.TakeEffect(t.GetComponent<Entity>());
+                    AnimatorParameterFragment animator = new AnimatorParameterFragment();
                     for (int i = 0; i < 3; i++)
                     {
                         HealthModifier hm = new HealthModifier(-30);
-                        hm.TakeEffect(t.GetComponent<Entity>());
+                        hm.TakeEffect(t.GetComponent<Entity>()); 
+                        animator.Animator = t.transform.GetChild(0).GetComponent<Animator>();
+                        animator.Name = "isHit";
+                        animator.TakeEffect();
+                    }
+                    if (t.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
+                    {
+                        animator.Name = "isDie";
+                        animator.TakeEffect();
                     }
                 }
             }

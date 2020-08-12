@@ -32,7 +32,7 @@ namespace NotionWorld.Behaviors
 
         public override void OnAwake()
         {
-            var animator = Owner.GetComponent<Animator>();
+            var animator = Owner.transform.GetChild(0).GetComponent<Animator>();
 
             animatorModifier = new AnimatorTriggerModifier()
             {

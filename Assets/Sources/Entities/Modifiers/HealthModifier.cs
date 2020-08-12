@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Capabilities;
+using NotionWorld.Events;
 
 namespace NotionWorld.Entities
 {
     public sealed class HealthModifier : Modifier
     {
+        private ComboEvenArg evenArg;
+
         public int Delta
         {
             get; set;
@@ -14,6 +17,7 @@ namespace NotionWorld.Entities
 
         public HealthModifier(int delta)
         {
+            evenArg = new ComboEvenArg(1);
             Delta = delta;
         }
 
@@ -23,6 +27,10 @@ namespace NotionWorld.Entities
             if(health != null)
             {
                 health.Value += Delta;
+                if (Delta < 0 && entity.CompareTag("Enemies"))
+                {
+                    EventCenter.DispatchEvent(evenArg);
+                }
             }
         }
     }

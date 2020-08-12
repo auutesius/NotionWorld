@@ -29,7 +29,7 @@ namespace NotionWorld.Actions
             {
                 animatorFragment = new AnimatorParameterFragment();
                 animatorFragment.Name = "Move";
-                animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
+                animatorFragment.Animator = entity.transform.GetChild(0).GetComponent<Animator>();
             }
             if (dir == null)
             {

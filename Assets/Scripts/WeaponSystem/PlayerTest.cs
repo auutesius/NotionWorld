@@ -33,7 +33,7 @@ public class PlayerTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Animator animator = entity.transform.GetChild(1).GetComponent<Animator>();
+            Animator animator = entity.transform.GetChild(0).GetComponent<Animator>();
             Vector3 s = animator.transform.localScale;
             animator.transform.localScale = new Vector3(s.x * -1, s.y, s.z);
         }

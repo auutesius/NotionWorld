@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     public Camera MainCamera;
     public Image HealthSlider;
     public Image EnergySlider;
+    public Text ComboCount;
     public Image AimImage;
     public Image AimRange;
     public bool HasArrowPointer;
@@ -39,6 +40,14 @@ public class UIController : MonoBehaviour
         AimingTracing();
         AttackRadius();
         ArrowTracing();
+    }
+
+    public void UpdateCombo(int value)
+    {
+        if (ComboCount != null)
+        {
+            ComboCount.text = "Combo" +  value;
+        }
     }
 
     public void EditSlider()
