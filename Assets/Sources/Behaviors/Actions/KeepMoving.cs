@@ -32,7 +32,7 @@ namespace NotionWorld.Behaviors
 
         private float currentTime = float.MaxValue;
 
-        private MoveAction moveAction;
+        private MoveFragment moveFragment;
 
         public enum MoveTrends
         {
@@ -41,7 +41,7 @@ namespace NotionWorld.Behaviors
 
         public override void OnAwake()
         {
-            moveAction = new MoveAction();
+            moveFragment = new MoveFragment();
             entity = Owner.GetComponent<Entity>();
         }
 
@@ -60,8 +60,8 @@ namespace NotionWorld.Behaviors
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
-                moveAction.Movement = Time.deltaTime * direction * speed.Value;
-                moveAction.TakeAction(entity);
+                moveFragment.Movement = Time.deltaTime * direction * speed.Value;
+                moveFragment.TakeEffect(entity);
                 return TaskStatus.Running;
             }
             else
