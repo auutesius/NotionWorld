@@ -26,7 +26,7 @@ namespace NotionWorld.Behaviors
 
             if(currentTime > 0)
             {
-                currentTime -= Time.deltaTime;     
+                currentTime -= Time.deltaTime; 
                 return TaskStatus.Running;
             }
             else

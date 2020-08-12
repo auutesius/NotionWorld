@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Capabilities;
-using NotionWorld.Entities;
+using NotionWorld.Modifiers;
 
 public abstract class SkillBullet : MonoBehaviour
 {
@@ -17,10 +17,6 @@ public abstract class SkillBullet : MonoBehaviour
     }
 
     public float coldDown;
-
-    protected Modifier[] sourceModifiers;
-
-    protected Modifier[] targetModifiers;
     
     protected virtual void OnSkillReleased()
     {

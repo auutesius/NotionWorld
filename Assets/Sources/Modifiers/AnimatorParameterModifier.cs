@@ -28,12 +28,12 @@ namespace NotionWorld.Modifiers
             {
                 throw new ArgumentNullException("Parameter name is null.");
             }
-            if (Value == null)
+            if(Animator == null)
             {
-                Animator.SetTrigger(Name);
+                return;
             }
-            Type type = Value.GetType();
 
+            Type type = Value.GetType();
             if (type == typeof(bool))
             {
                 Animator.SetBool(Name, (bool)Value);
