@@ -42,13 +42,6 @@ namespace NotionWorld.Actions
             }
             else if (SkillType == "BombSkill")
             {
-                // 动画展示
-                AnimatorParameterFragment animatorFragment = new AnimatorParameterFragment();
-                animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
-                animatorFragment.Name = "Throw";
-                animatorFragment.TakeEffect();
-
-                // 扔一个水弹
                 BombFragment bombFragement = new BombFragment();
                 bombFragement.AttackTag = "Enemies";
                 bombFragement.BulletSpeed = 1f;
@@ -82,15 +75,9 @@ namespace NotionWorld.Actions
                 rushFragment.TakeEffect(entity);
 
                 // 武器动画
-                RushAttackAnimatorFragment weaponAnimatorFragment = new RushAttackAnimatorFragment();
-                weaponAnimatorFragment.InteralTime = SkillInternal;
-                weaponAnimatorFragment.TakeEffect(entity);
-
-                // 人物动画
-                AnimatorParameterFragment animatorFragment = new AnimatorParameterFragment();
-                animatorFragment.Animator = entity.transform.GetChild(1).GetComponent<Animator>();
-                animatorFragment.Name = "Rush";
-                animatorFragment.TakeEffect();
+                RushAttackAnimatorFragment animatorFragment = new RushAttackAnimatorFragment();
+                animatorFragment.InteralTime = SkillInternal;
+                animatorFragment.TakeEffect(entity);
             }
             else
             {

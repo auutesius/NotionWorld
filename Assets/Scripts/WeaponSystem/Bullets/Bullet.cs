@@ -87,13 +87,14 @@ public class Bullet : MonoBehaviour
     }
     public virtual void HitRecycleNow()
     {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if (IsNotRecycled)
         {
             if (HitEffect != null && HitEffect != "" && HitEffect != " ")
             {
                 GameObject shootHitEffect = ObjectPool.GetObject(HitEffect, "Effects");
-                // shootHitEffect.transform.Rotate(m_euler);
-                shootHitEffect.transform.position = transform.position + transform.up.normalized * 0.5f;
+                shootHitEffect.transform.Rotate(m_euler);
+                shootHitEffect.transform.position = transform.position;
             }
             if (HitAudioSource != null)
             {
@@ -101,7 +102,6 @@ public class Bullet : MonoBehaviour
             }
             Nowtime = 0;
             
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             ObjectPool.RecycleObject(gameObject);
             IsNotRecycled = false;
         }

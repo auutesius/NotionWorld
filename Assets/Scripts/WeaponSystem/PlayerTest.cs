@@ -31,13 +31,8 @@ public class PlayerTest : MonoBehaviour
         {
             ChargeEnergy();
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Animator animator = entity.transform.GetChild(1).GetComponent<Animator>();
-            Vector3 s = animator.transform.localScale;
-            animator.transform.localScale = new Vector3(s.x * -1, s.y, s.z);
-        }
-        // Debug.Log(enmey.GetCapability<Health>().Value);
+
+            Debug.Log(enmey.GetCapability<Health>().Value);
 
         if (skillController.GetIsWorking())
         {
