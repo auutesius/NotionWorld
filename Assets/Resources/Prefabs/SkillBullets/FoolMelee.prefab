@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5983180091886319263}
+  - component: {fileID: 1144245047450155825}
   m_Layer: 0
-  m_Name: Melee
-  m_TagString: Untagged
+  m_Name: FoolMelee
+  m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,3 +31,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144245047450155825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954078423263219686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a80e479650d8d45b71c9d5406dbc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coldDown: 1
+  damage: 15
+  radius: 0.3125
+  time: 0.2
+  angle: 180

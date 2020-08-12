@@ -5,23 +5,23 @@ using NotionWorld.Capabilities;
 
 namespace NotionWorld.Modifiers
 {
-    public sealed class PositionModifier : Modifier
+    public sealed class HealthModifier : Modifier
     {
-        public Vector3 DeltaPosition
+        public Health Health
         {
             get; set;
         }
 
-        public Transform Transform
+        public int DeltaValue
         {
             get; set;
         }
 
         public override void TakeEffect()
         {
-            if(Transform != null)
+            if(Health != null)
             {
-                Transform.position += DeltaPosition;
+                Health.Value += DeltaValue;
             }
         }
     }

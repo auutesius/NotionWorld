@@ -23,7 +23,10 @@ namespace NotionWorld.Modifiers
             {
                 throw new ArgumentNullException("Parameter name is null.");
             }
-            Animator.SetTrigger(Name);
+            if(Animator != null)
+            {
+                Animator.SetTrigger(Name);
+            }
         }
     }
 }
