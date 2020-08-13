@@ -9,7 +9,6 @@ Assets/AssetStoreTools*
 .vs/
 
 .vscode/
-/ProjectSettings/ProjectVersion.txt
 
 8K Skybox Pack Free/
 Allsky/
@@ -46,3 +45,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+ProjectSettings/ProjectVersion.txt

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395891807971679361}
   - component: {fileID: 395891807971679360}
+  - component: {fileID: 816164423}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: System
@@ -43,5 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647c84e57e13c474e97590ab972a61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  weaponController: {fileID: 0}
+  entity: {fileID: 0}
+  ChargeEnergyCombo: 5
+  EnergyPerCharge: 6
+  skillController: {fileID: 0}
+--- !u!114 &816164423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395891807971679363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9978962b73b5a2846967f5c36bf5b5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClearInternal: 5
+  ComboValue: 0

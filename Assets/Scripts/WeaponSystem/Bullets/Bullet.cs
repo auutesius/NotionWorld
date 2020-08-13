@@ -140,6 +140,16 @@ public class Bullet : MonoBehaviour
                 {
                     animator.Name = "Die";
                     animator.TakeEffect();
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        StopPlayerMovementFragment stopPlayerMovementFragment = new StopPlayerMovementFragment(0f);
+                        stopPlayerMovementFragment.TakeEffect(collision.GetComponent<Entity>());
+
+                        StopPlayerStateFragment stopPlayerStateFragment = new StopPlayerStateFragment(0f);
+                        stopPlayerStateFragment.TakeEffect(collision.GetComponent<Entity>());
+                    };
+
+                    collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                 }
             }
         }

@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Modifiers;
@@ -6,22 +6,21 @@ using NotionWorld.Entities;
 using NotionWorld.Capabilities;
 using NotionWorld.Worlds;
 using HealthModifier = NotionWorld.Modifiers.HealthModifier;
-using NotionWorld.Actions;
 
-public sealed class RevolverBullet : SkillBullet
+public sealed class TrackBullet : SkillBullet
 {
-    public int damage;
     public float speed;
+
     public float time;
-    [Tooltip("撞击的特效名")] public string HitEffectName;
+
+    public int damage;
+
+    public float maxTrackAngle;
 
     private HealthModifier healthModifier;
     private AnimatorTriggerModifier animatorTrigger;
-    private AudioPlayModifier audioPlayModifier;
-    private CreatEffectModifier creatEffectModifier;
-    private AudioSource audioSource;
 
-    private void Awake()
+     private void Awake()
     {
         healthModifier = new HealthModifier()
         {
@@ -31,36 +30,37 @@ public sealed class RevolverBullet : SkillBullet
         {
             Name = "Hit"
         };
-        audioPlayModifier = new AudioPlayModifier()
-        {
-            Audio = gameObject.GetComponent<AudioSource>()
-        };
-        creatEffectModifier = new CreatEffectModifier()
-        {
-            EffectName = HitEffectName
-        };
     }
+
 
     public override void Launch(Vector2 position, Vector2 direction)
     {
         transform.position = position;
         transform.right = direction;
-        StartCoroutine(MoveCorotinue());
+        StartCoroutine(TrackCorotinue());
     }
 
-    private IEnumerator MoveCorotinue()
+    private IEnumerator TrackCorotinue()
     {
         WaitForFixedUpdate wait = new WaitForFixedUpdate();
 
         float timer = time;
-
-        Vector2 movement = transform.right * speed * Time.fixedDeltaTime;
-        Vector2 position = transform.position;
-
         while (timer > 0)
         {
+            Vector2 movement = transform.right * speed * Time.fixedDeltaTime;
+
+            Vector2 moveDirection = transform.right;
+            Vector2 targetDirection = Target.transform.position - transform.position;
+            targetDirection = targetDirection.normalized;
+
+            float targetAngle = Vector2.Angle(transform.right, targetDirection);
+            float angle = maxTrackAngle < targetAngle ? maxTrackAngle : targetAngle;
+
+            moveDirection = Vector2.Lerp(moveDirection, targetDirection, angle / targetAngle);
+
+            Vector2 position =  transform.position;
+            position += moveDirection * speed * Time.fixedDeltaTime;;
             transform.position = position;
-            position += movement;
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }
@@ -85,18 +85,7 @@ public sealed class RevolverBullet : SkillBullet
             if (other.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
             {
                 animatorTrigger.Name = "Die";
-
-                if (other.gameObject.CompareTag("Player"))
-                {
-                    StopPlayerMovementFragment stopPlayerMovementFragment = new StopPlayerMovementFragment(0f);
-                    stopPlayerMovementFragment.TakeEffect(other.GetComponent<Entity>());
-
-                    StopPlayerStateFragment stopPlayerStateFragment = new StopPlayerStateFragment(0f);
-                    stopPlayerStateFragment.TakeEffect(other.GetComponent<Entity>());
-                };
-                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
-            creatEffectModifier.HitPoint = transform;
             TakeEffect();
 
             ObjectPool.RecycleObject(this.gameObject);
@@ -107,7 +96,5 @@ public sealed class RevolverBullet : SkillBullet
     {
         healthModifier.TakeEffect();
         animatorTrigger.TakeEffect();
-        audioPlayModifier.TakeEffect();
-        creatEffectModifier.TakeEffect();
     }
 }

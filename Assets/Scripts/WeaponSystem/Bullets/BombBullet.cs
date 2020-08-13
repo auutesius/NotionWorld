@@ -86,13 +86,22 @@ public class BombBullet : Bullet
                         HealthModifier hm = new HealthModifier(-30);
                         hm.TakeEffect(t.GetComponent<Entity>()); 
                         animator.Animator = t.transform.GetChild(0).GetComponent<Animator>();
-                        animator.Name = "isHit";
+                        animator.Name = "Hit";
                         animator.TakeEffect();
                     }
                     if (t.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
                     {
-                        animator.Name = "isDie";
+                        animator.Name = "Die";
                         animator.TakeEffect();
+                        if (t.gameObject.CompareTag("Player"))
+                        {
+                            StopPlayerMovementFragment stopPlayerMovementFragment = new StopPlayerMovementFragment(0f);
+                            stopPlayerMovementFragment.TakeEffect(t.GetComponent<Entity>());
+
+                            StopPlayerStateFragment stopPlayerStateFragment = new StopPlayerStateFragment(0f);
+                            stopPlayerStateFragment.TakeEffect(t.GetComponent<Entity>());
+                        };
+                        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                     }
                 }
             }
