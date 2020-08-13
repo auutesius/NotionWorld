@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 1528743936}
   - component: {fileID: 6879261118059805514}
   - component: {fileID: 613660245082102136}
-  - component: {fileID: 1344543308811987500}
+  - component: {fileID: 2203334873958815195}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -444,7 +444,7 @@ MonoBehaviour:
   AttackTag: Enemies
   forward: {x: 0, y: 0, z: 0}
   IsSkilling: 0
---- !u!60 &1344543308811987500
+--- !u!60 &2203334873958815195
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -469,10 +469,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.34971112, y: 0.30506316}
-      - {x: 0.21512893, y: 0.3982768}
-      - {x: -0.05048139, y: 0.40077814}
-      - {x: -0.22755374, y: 0.26604885}
-      - {x: -0.19076216, y: -0.36575717}
-      - {x: 0.3091687, y: -0.3671706}
-      - {x: 0.36797944, y: 0.12015736}
+    - - {x: 0.2724258, y: 0.34617788}
+      - {x: -0.13014662, y: 0.3452306}
+      - {x: -0.13112924, y: -0.35236105}
+      - {x: 0.2641709, y: -0.3523609}
