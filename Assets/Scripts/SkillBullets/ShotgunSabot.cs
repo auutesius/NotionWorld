@@ -47,11 +47,16 @@ public sealed class ShotgunSabot : SkillBullet
             yield return wait;
         }
 
-        WaitForSeconds interval = new WaitForSeconds(waveInterval);
         for (int i = 0; i < wave; i++)
         {
             CreateBarrage();
-            yield return interval;
+            timer = waveInterval;
+
+            while (timer > 0)
+            {
+                timer -= Time.fixedDeltaTime;
+                yield return wait;
+            }
         }
 
         ObjectPool.RecycleObject(this.gameObject);
