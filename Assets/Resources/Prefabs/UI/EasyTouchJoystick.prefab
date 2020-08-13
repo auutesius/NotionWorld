@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6457781399842536635}
   - component: {fileID: 6457781399842536634}
   - component: {fileID: 6457781399842536629}
+  - component: {fileID: 5209299753774317498}
   m_Layer: 0
   m_Name: Joystick
   m_TagString: Untagged
@@ -108,12 +109,12 @@ RectTransform:
   m_Children:
   - {fileID: 6457781399667942761}
   m_Father: {fileID: 6457781400257563876}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 255.3, y: -271}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 172, y: 212}
+  m_SizeDelta: {x: -500, y: 300.00006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6457781399842536633
 MonoBehaviour:
@@ -154,7 +155,7 @@ MonoBehaviour:
   allowSimulationStandalone: 0
   visibleOnStandalone: 1
   dPadAxisCount: 0
-  useFixedUpdate: 0
+  useFixedUpdate: 1
   isOnDrag: 0
   isSwipeIn: 0
   isSwipeOut: 0
@@ -162,8 +163,8 @@ MonoBehaviour:
   showSpriteInspector: 0
   showEventInspector: 0
   showBehaviourInspector: 0
-  showAxesInspector: 0
-  showTouchEventInspector: 0
+  showAxesInspector: 1
+  showTouchEventInspector: 1
   showDownEventInspector: 0
   showPressEventInspector: 0
   showCameraInspector: 0
@@ -209,7 +210,7 @@ MonoBehaviour:
   OnPressRight:
     m_PersistentCalls:
       m_Calls: []
-  joystickType: 0
+  joystickType: 1
   allowJoystickOverTouchPad: 1
   radiusBase: 0
   radiusBaseValue: 0
@@ -221,7 +222,7 @@ MonoBehaviour:
     enable: 1
     invertedAxis: 0
     speed: 15
-    deadValue: 0.1
+    deadValue: 0.3
     valueMethod: 0
     curveValue:
       serializedVersion: 2
@@ -274,7 +275,7 @@ MonoBehaviour:
     currentGravity: 0
     isJump: 0
     unityAxis: Horizontal
-    showGeneralInspector: 0
+    showGeneralInspector: 1
     showDirectInspector: 0
     showInertiaInspector: 0
     showSimulatinInspector: 0
@@ -286,7 +287,7 @@ MonoBehaviour:
     enable: 1
     invertedAxis: 0
     speed: 15
-    deadValue: 0.1
+    deadValue: 0.3
     valueMethod: 0
     curveValue:
       serializedVersion: 2
@@ -339,13 +340,13 @@ MonoBehaviour:
     currentGravity: 0
     isJump: 0
     unityAxis: Vertical
-    showGeneralInspector: 0
+    showGeneralInspector: 1
     showDirectInspector: 0
     showInertiaInspector: 0
     showSimulatinInspector: 0
   thumb: {fileID: 6457781399667942761}
   joystickArea: 0
-  userArea: {fileID: 6457781400007017344}
+  userArea: {fileID: 0}
   isTurnAndMove: 0
   tmSpeed: 10
   tmAdditionnalRotation: 0
@@ -439,41 +440,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vector: {x: 0, y: 0}
   controlETCJoystick: {fileID: 6457781399842536633}
---- !u!1 &6457781400007017347
-GameObject:
+--- !u!114 &5209299753774317498
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6457781400007017344}
-  m_Layer: 0
-  m_Name: Enable Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6457781400007017344
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457781400007017347}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6457781400257563876}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 0, y: -300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_GameObject: {fileID: 6457781399842536631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96373da5010ca9442a11456032621dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quickActionName: QuickLongTapfd6ed3d
+  isMultiTouch: 0
+  is2Finger: 0
+  isOnTouch: 0
+  enablePickOverUI: 1
+  resetPhysic: 0
+  directAction: 0
+  axesAction: 0
+  sensibility: 1
+  directCharacterController: {fileID: 0}
+  inverseAxisValue: 0
+  onLongTap:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6457781399842536629}
+        m_MethodName: LongTapMe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  actionTriggering: 0
 --- !u!1 &6457781400257563872
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6457781400257563876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -504,7 +508,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 6457781400007017344}
   - {fileID: 6457781399842536628}
   m_Father: {fileID: 0}
   m_RootOrder: 0

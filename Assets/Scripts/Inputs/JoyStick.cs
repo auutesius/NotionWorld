@@ -22,9 +22,9 @@ public class JoyStick : MonoBehaviour
         eventArgs = new JoyStickMovedEventArgs(Vector);
         //controlETCJoystick = ETCInput.GetControlJoystick("Joystick");
         Vector = new Vector2(controlETCJoystick.axisX.axisValue, controlETCJoystick.axisY.axisValue);
-#if UNITY_EDITOR
-        controlETCJoystick.joystickType = ETCJoystick.JoystickType.Static;
-#endif
+// #if UNITY_EDITOR
+//         controlETCJoystick.joystickType = ETCJoystick.JoystickType.Static;
+// #endif
         //controlETCButton = ETCInput.GetControlButton("Thumb");
     }
 
@@ -38,6 +38,13 @@ public class JoyStick : MonoBehaviour
             eventArgs.Vector = Vector;
         }
         EventCenter.DispatchEvent(eventArgs);
+    }
+
+    public void LongTap(){
+        Debug.Log("LongTap");
+    }
+    public void DoubleTap(){
+        Debug.Log("DoubleTap");
     }
 
 }
