@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85aab941eb460fc4283a434024a38508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coldDown: 2
+  coldDown: 4
   speed: 1
   time: 0
   buckshot: Buckshot

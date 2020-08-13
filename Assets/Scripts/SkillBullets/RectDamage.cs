@@ -68,7 +68,7 @@ public sealed class RectDamage : SkillBullet
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }
-
+        boxCollider.enabled = false;
         ObjectPool.RecycleObject(this.gameObject);
     }
 
