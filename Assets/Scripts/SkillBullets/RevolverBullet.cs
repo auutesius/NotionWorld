@@ -10,14 +10,15 @@ using HealthModifier = NotionWorld.Modifiers.HealthModifier;
 public sealed class RevolverBullet : SkillBullet
 {
     public int damage;
-
     public float speed;
-
     public float time;
+    [Tooltip("撞击的特效名")] public string HitEffectName;
 
     private HealthModifier healthModifier;
-
     private AnimatorTriggerModifier animatorTrigger;
+    private AudioPlayModifier audioPlayModifier;
+    private CreatEffectModifier creatEffectModifier;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -28,6 +29,14 @@ public sealed class RevolverBullet : SkillBullet
         animatorTrigger = new AnimatorTriggerModifier()
         {
             Name = "Hit"
+        };
+        audioPlayModifier = new AudioPlayModifier()
+        {
+            Audio = gameObject.GetComponent<AudioSource>()
+        };
+        creatEffectModifier = new CreatEffectModifier()
+        {
+            EffectName = HitEffectName
         };
     }
 
@@ -69,8 +78,14 @@ public sealed class RevolverBullet : SkillBullet
             {
                 healthModifier.Health = entity.GetCapability<Health>();
             }
-            animatorTrigger.Animator = gameObject.GetComponent<Animator>();
+            animatorTrigger.Animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
 
+            animatorTrigger.Name = "Hit";
+            if (other.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
+            {
+                animatorTrigger.Name = "Die";
+            }
+            creatEffectModifier.HitPoint = transform;
             TakeEffect();
 
             ObjectPool.RecycleObject(this.gameObject);
@@ -81,5 +96,7 @@ public sealed class RevolverBullet : SkillBullet
     {
         healthModifier.TakeEffect();
         animatorTrigger.TakeEffect();
+        audioPlayModifier.TakeEffect();
+        creatEffectModifier.TakeEffect();
     }
 }

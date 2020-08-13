@@ -134,11 +134,11 @@ public class Bullet : MonoBehaviour
 
                 AnimatorParameterFragment animator = new AnimatorParameterFragment();
                 animator.Animator = collision.transform.GetChild(0).GetComponent<Animator>();
-                animator.Name = "isHit";
+                animator.Name = "Hit";
                 animator.TakeEffect();
                 if (collision.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
                 {
-                    animator.Name = "isDie";
+                    animator.Name = "Die";
                     animator.TakeEffect();
                 }
             }

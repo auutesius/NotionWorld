@@ -64,6 +64,13 @@ public sealed class Melee : SkillBullet
                         healthModifier.Health = entity.GetCapability<Health>();
                     }
                     animatorTrigger.Animator = gameObject.GetComponent<Animator>();
+                    animatorTrigger.Animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
+
+                    animatorTrigger.Name = "Hit";
+                    if (gameObject.GetComponent<Entity>().GetCapability<Health>().Value <= 0)
+                    {
+                        animatorTrigger.Name = "Die";
+                    }
 
                     TakeEffect();
                     timer = 0;
@@ -74,7 +81,7 @@ public sealed class Melee : SkillBullet
             yield return wait;
         }
 
-        ObjectPool.RecycleObject(this.gameObject);
+        ObjectPool.RecycleObject(gameObject);
     }
 
     private void TakeEffect()
