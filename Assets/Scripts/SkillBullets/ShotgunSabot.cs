@@ -26,7 +26,7 @@ public sealed class ShotgunSabot : SkillBullet
     public override void Launch(Vector2 position, Vector2 direction)
     {
         transform.position = position;
-        transform.forward = direction;
+        transform.right = direction;
         StartCoroutine(MoveCorotinue());
     }
 
@@ -36,13 +36,13 @@ public sealed class ShotgunSabot : SkillBullet
 
         float timer = time;
 
-        Vector2 deltaForward = transform.forward * speed * Time.fixedDeltaTime;
+        Vector2 movement = transform.right * speed * Time.fixedDeltaTime;
         Vector2 position = transform.position;
 
         while (timer > 0)
         {
             transform.position = position;
-            position += deltaForward;
+            position += movement;
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }
@@ -60,7 +60,7 @@ public sealed class ShotgunSabot : SkillBullet
     private void CreateBarrage()
     {
         float deltaAngle = angle / (count - 1);
-        transform.Rotate(-angle / 2, 0, 0);
+        transform.Rotate(0, 0, -angle / 2);
 
         for (int i = 0; i < count; i++)
         {
@@ -68,9 +68,10 @@ public sealed class ShotgunSabot : SkillBullet
             SkillBullet skill = bullet.GetComponent<SkillBullet>();
             skill.Source = Source;
             skill.Target = Target;
-            skill.Launch(transform.position, transform.forward);
 
-            transform.Rotate(deltaAngle, 0, 0);
+            skill.Launch(transform.position, transform.right);
+
+            transform.Rotate(0, 0, deltaAngle);
         }
     }
 }

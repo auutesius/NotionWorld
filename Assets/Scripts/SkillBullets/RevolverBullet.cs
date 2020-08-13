@@ -34,7 +34,7 @@ public sealed class RevolverBullet : SkillBullet
     public override void Launch(Vector2 position, Vector2 direction)
     {
         transform.position = position;
-        transform.forward = direction;
+        transform.right = direction;
         StartCoroutine(MoveCorotinue());
     }
 
@@ -44,13 +44,13 @@ public sealed class RevolverBullet : SkillBullet
 
         float timer = time;
 
-        Vector2 deltaForward = transform.forward * speed * Time.fixedDeltaTime;
+        Vector2 movement = transform.right * speed * Time.fixedDeltaTime;
         Vector2 position = transform.position;
 
         while (timer > 0)
         {
             transform.position = position;
-            position += deltaForward;
+            position += movement;
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }

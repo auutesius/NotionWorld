@@ -36,7 +36,7 @@ public sealed class Melee : SkillBullet
     public override void Launch(Vector2 position, Vector2 direction)
     {
         transform.position = position;
-        transform.forward = direction;
+        transform.right = direction;
         StartCoroutine(SweepCorotinue());
     }
 
@@ -48,11 +48,11 @@ public sealed class Melee : SkillBullet
         float anglePerFrame = angle / time * Time.fixedDeltaTime;
         float halfAngle = angle / 2;
 
-        transform.Rotate(-halfAngle, 0, 0);
+        transform.Rotate( 0, 0,-halfAngle);
 
         while (timer > 0)
         {
-            var hits = Physics2D.RaycastAll(transform.position, transform.forward);
+            var hits = Physics2D.RaycastAll(transform.position, transform.right);
             foreach (var hit in hits)
             {
                 var gameObject = hit.transform.gameObject;
@@ -70,7 +70,7 @@ public sealed class Melee : SkillBullet
                 }
             }
             timer -= Time.fixedDeltaTime;
-            transform.Rotate(anglePerFrame, 0, 0);
+            transform.Rotate(0, 0,anglePerFrame);
             yield return wait;
         }
 
