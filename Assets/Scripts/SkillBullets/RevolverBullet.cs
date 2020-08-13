@@ -6,6 +6,7 @@ using NotionWorld.Entities;
 using NotionWorld.Capabilities;
 using NotionWorld.Worlds;
 using HealthModifier = NotionWorld.Modifiers.HealthModifier;
+using NotionWorld.Actions;
 
 public sealed class RevolverBullet : SkillBullet
 {
@@ -84,6 +85,16 @@ public sealed class RevolverBullet : SkillBullet
             if (other.gameObject.GetComponent<Entity>().GetCapability<Health>().Value < 0)
             {
                 animatorTrigger.Name = "Die";
+
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    StopPlayerMovementFragment stopPlayerMovementFragment = new StopPlayerMovementFragment(0f);
+                    stopPlayerMovementFragment.TakeEffect(other.GetComponent<Entity>());
+
+                    StopPlayerStateFragment stopPlayerStateFragment = new StopPlayerStateFragment(0f);
+                    stopPlayerStateFragment.TakeEffect(other.GetComponent<Entity>());
+                };
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
             creatEffectModifier.HitPoint = transform;
             TakeEffect();

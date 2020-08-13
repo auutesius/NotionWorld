@@ -6,6 +6,7 @@ using NotionWorld.Entities;
 using NotionWorld.Capabilities;
 using NotionWorld.Worlds;
 using HealthModifier = NotionWorld.Modifiers.HealthModifier;
+using NotionWorld.Actions;
 
 public sealed class Melee : SkillBullet
 {
@@ -70,6 +71,16 @@ public sealed class Melee : SkillBullet
                     if (gameObject.GetComponent<Entity>().GetCapability<Health>().Value <= 0)
                     {
                         animatorTrigger.Name = "Die";
+
+                        if (gameObject.gameObject.CompareTag("Player"))
+                        {
+                            StopPlayerMovementFragment stopPlayerMovementFragment = new StopPlayerMovementFragment(0f);
+                            stopPlayerMovementFragment.TakeEffect(gameObject.GetComponent<Entity>());
+
+                            StopPlayerStateFragment stopPlayerStateFragment = new StopPlayerStateFragment(0f);
+                            stopPlayerStateFragment.TakeEffect(gameObject.GetComponent<Entity>());
+                        };
+                        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                     }
 
                     TakeEffect();

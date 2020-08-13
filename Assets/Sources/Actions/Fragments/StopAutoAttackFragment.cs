@@ -11,12 +11,20 @@ namespace NotionWorld.Actions
 {
     public sealed class StopPlayerStateFragment : Fragment
     {
-        public int SkillInternal;
+        public float SkillInternal;
+
+        public StopPlayerStateFragment(float internalTime)
+        {
+            SkillInternal = internalTime;
+        }
 
         public override void TakeEffect(Entity actor)
         {
             actor.gameObject.GetComponent<WeaponController>().IsSkilling = true;
-            Delay(50, actor);
+            if (SkillInternal > 0)
+            {
+                Delay(50, actor);
+            }
         }
         private async void Delay(int ms, Entity actor)
         {

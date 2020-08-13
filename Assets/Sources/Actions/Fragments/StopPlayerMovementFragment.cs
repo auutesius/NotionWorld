@@ -11,9 +11,9 @@ namespace NotionWorld.Actions
 {
     public sealed class StopPlayerMovementFragment : Fragment
     {
-        public int SkillInternal;
+        public float SkillInternal;
 
-        public StopPlayerMovementFragment(int skillInternal)
+        public StopPlayerMovementFragment(float skillInternal)
         {
             SkillInternal = skillInternal;
         }
@@ -21,7 +21,10 @@ namespace NotionWorld.Actions
         public override void TakeEffect(Entity actor)
         {
             actor.gameObject.GetComponent<EntityMovement>().IsSkilling = true;
-            Delay(50, actor);
+            if (SkillInternal > 0)
+            {
+                Delay(50, actor);
+            }
         }
         private async void Delay(int ms, Entity actor)
         {
