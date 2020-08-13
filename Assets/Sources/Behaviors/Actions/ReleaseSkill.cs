@@ -13,8 +13,8 @@ namespace NotionWorld.Behaviors
     [TaskCategory("NotionWorld")]
     public sealed class ReleaseSkill : Action
     {
-        [BehaviorDesigner.Runtime.Tasks.Tooltip("Skill Want to use.")]
-        public string skillID;
+        [BehaviorDesigner.Runtime.Tasks.Tooltip("Skill want to use.")]
+        public string skillBullet;
 
         [BehaviorDesigner.Runtime.Tasks.Tooltip("Attack Target.")]
         public SharedGameObject targetGameObject;
@@ -33,7 +33,7 @@ namespace NotionWorld.Behaviors
             animatorModifier = new AnimatorTriggerModifier()
             {
                 Animator = animator,
-                Name = skillID
+                Name = skillBullet
             };
         }
 
@@ -53,7 +53,7 @@ namespace NotionWorld.Behaviors
 
         private void Skill()
         {
-            GameObject prefab = NotionWorld.Worlds.ObjectPool.GetObject(skillID, "SkillBullets");
+            GameObject prefab = NotionWorld.Worlds.ObjectPool.GetObject(skillBullet, "SkillBullets");
             SkillBullet bullet = prefab.GetComponent<SkillBullet>();
             bullet.Source = Owner.gameObject;
             bullet.Target = targetGameObject.Value;
