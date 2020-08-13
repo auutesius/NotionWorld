@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vector: {x: 0, y: 0}
+  skillController: {fileID: 0}
   controlETCJoystick: {fileID: 6457781399842536633}
 --- !u!114 &5209299753774317498
 MonoBehaviour:

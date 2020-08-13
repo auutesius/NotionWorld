@@ -5,11 +5,9 @@ using NotionWorld.Events;
 
 public class JoyStick : MonoBehaviour
 {
-    // public RectTransform stick;
-    // public float radius = 100;
-    // private bool hide = false;
-    // private float hideTimer = 1.0f;
-    public Vector2 Vector;// => stick.anchoredPosition / radius;
+
+    public Vector2 Vector;
+    public SkillControllerForPlayer skillController;
 
     private JoyStickMovedEventArgs eventArgs;
     //获取到场景中的Joystick
@@ -42,9 +40,15 @@ public class JoyStick : MonoBehaviour
 
     public void LongTap(){
         Debug.Log("LongTap");
+       
     }
     public void DoubleTap(){
         Debug.Log("DoubleTap");
+        skillController.InvincibleButton();
+        skillController.ripple.Emit(new Vector2(0f,0f));
+        Animator playerAnim = GameObject.Find("Player").transform.GetChild(0).GetComponent<Animator>();
+        playerAnim.Play("muteki");
+        Debug.Log("Muteki!!!!");
     }
 
 }
