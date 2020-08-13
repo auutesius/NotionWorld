@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5249618474917726394
 Transform:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   AutoRecycleTime: 0.18
   Scale: {x: 1, y: 1, z: 1}
   HitAudioSource: {fileID: 5517540041709914817}
-  HitEffect: Slash
+  HitEffect: Energy3_0
   DestoryEffect: 
 --- !u!61 &5522420392789793821
 BoxCollider2D:
@@ -344,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8220086120040553901
 Transform:
   m_ObjectHideFlags: 0

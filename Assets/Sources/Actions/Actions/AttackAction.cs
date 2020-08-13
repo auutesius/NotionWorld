@@ -12,17 +12,18 @@ namespace NotionWorld.Actions
     {
         public int AttackDelayOffset;
         public Vector3 AttackDir;
-        public string AttackTag; 
+        public string AttackTag;
 
         private AttackFragment attack;
-        private WeaponAnimatorFrament weaponAnimator;
+        private WeaponAttackSimulaterFragment weaponAnimator;
 
         public override void TakeAction(Entity entity)
         {            
             if (weaponAnimator == null)
             {
-                weaponAnimator = new WeaponAnimatorFrament();
+                weaponAnimator = new WeaponAttackSimulaterFragment();
             }
+            weaponAnimator.AttackDir = AttackDir;
             weaponAnimator.TakeEffect(entity);
             if (attack == null)
             {

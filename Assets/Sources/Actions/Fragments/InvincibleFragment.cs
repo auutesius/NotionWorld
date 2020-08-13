@@ -20,7 +20,6 @@ namespace NotionWorld.Actions
         }
         private async void Delay(float ms, Entity actor)
         {
-            Debug.Log(actor.GetComponent<PolygonCollider2D>().enabled);
             await Task.Delay((int)ms);
             actor.GetComponent<PolygonCollider2D>().enabled = true;
 

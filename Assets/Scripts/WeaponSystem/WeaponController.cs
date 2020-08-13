@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
     public GameObject weapon;
     public string AttackTag;
     [HideInInspector] public Vector3 forward;
-    public bool IsSkilling;
+    [HideInInspector] public bool IsSkilling;
 
     private bool IsColdingDown;
     private Entity entity;
@@ -44,14 +44,14 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        if (CheckAttackTarget() != null)
+        if (CheckAttackTarget() != null || IsColdingDown)
         {
-            Vector3 aimForward = CheckAttackTarget().transform.position - transform.position;
             if (!IsColdingDown)
             {
+                Vector3 aimForward = CheckAttackTarget().transform.position - transform.position;
                 StartCoroutine(WeaponCD(aimForward));
+                WeaponLookAt(aimForward);
             }
-            WeaponLookAt(aimForward);
         }
         else
         {
@@ -141,15 +141,8 @@ public class WeaponController : MonoBehaviour
 
                 moveTowardFragment.Direction = ((collision.transform.position - transform.position).normalized);
                 moveTowardFragment.InternalTime = 0.5f;
-                moveTowardFragment.Speed = 0.4f;
+                moveTowardFragment.Speed = 0.2f;
                 moveTowardFragment.TakeEffect(collision.GetComponent<Entity>());
-
-                /*
-                GravitationModifier gravitationModifier = new GravitationModifier(transform.position, 0.2f,1);
-                healthModifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
-                gravitationModifier.Center = (collision.transform.position - transform.position).normalized + collision.transform.position;
-                gravitationModifier.TakeEffect(collision.transform.gameObject.GetComponent<Entity>());
-                */
             }
         }
     }

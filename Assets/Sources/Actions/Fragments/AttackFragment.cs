@@ -20,13 +20,15 @@ namespace NotionWorld.Actions
             {
                 throw new InvalidOperationException("Entity without Attack capability can not do AttackAction.");
             }
-            Delay((int)((actor.gameObject.GetComponent<WeaponController>().weapon.gameObject.GetComponent<AnimatorTimeInfo>().PreAimInternal) * 1000), actor);
-
+            Delay((int)(actor.GetCapability<Attack>().Interval * 0.5F) * 1000, actor);
 
         }
         private async void Delay(int ms, Entity actor)
         {
+            Debug.Log("start" + Time.time);
             await Task.Delay(ms);
+            Debug.Log("end" + Time.time);
+
             float euler = AttackDir.y > 0 ? -(Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI : -((Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI - 180);
             GameObject bullet = ObjectPool.GetObject(actor.GetCapability<Attack>().AttackType, "Bullets");
             bullet.GetComponent<Bullet>().Speed = actor.GetCapability<Attack>().BulletSpeed;

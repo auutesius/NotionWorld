@@ -12,7 +12,7 @@ namespace NotionWorld.Actions
         public float InteralTime;
         public override void TakeEffect(Entity actor)
         {
-            Animator animator = actor.gameObject.GetComponent<WeaponController>().weapon.GetComponent<Animator>();
+            Animator animator = actor.gameObject.GetComponent<WeaponController>().weapon.transform.GetChild(0).GetComponent<Animator>();
             animator.SetBool("isRotateAttacking", true);
             Delay((int)(InteralTime * 1000), animator);
         }

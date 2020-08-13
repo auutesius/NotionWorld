@@ -11,16 +11,21 @@ public class PlayerTest : MonoBehaviour
 {
     public float speed;
     public SkillControllerForPlayer skillController;
+    public WeaponController WC;
     private Rigidbody2D RB;
-    public Entity enmey;
     private Entity entity;
     Energy energy;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         entity = GetComponent<Entity>();
         energy = entity.GetCapability<Energy>();
+
+
     }
 
     // Update is called once per frame
@@ -31,11 +36,12 @@ public class PlayerTest : MonoBehaviour
         {
             ChargeEnergy();
         }
+
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Animator animator = entity.transform.GetChild(0).GetComponent<Animator>();
-            Vector3 s = animator.transform.localScale;
-            animator.transform.localScale = new Vector3(s.x * -1, s.y, s.z);
+            Vector3 attackDir = Vector2.right;
+            WC.transform.rotation = WC.transform.rotation * Quaternion.Euler(new Vector3(0f,0f,45f));
+            // Vector3 UpDir = 
         }
         // Debug.Log(enmey.GetCapability<Health>().Value);
 

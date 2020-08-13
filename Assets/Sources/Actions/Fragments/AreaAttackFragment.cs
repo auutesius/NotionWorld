@@ -18,9 +18,8 @@ namespace NotionWorld.Actions
             Delay(50, actor);
         }
         private async void Delay(float ms, Entity actor)
-        {
-            await Task.Delay((int)actor.GetComponentInChildren<AnimatorTimeInfo>().AttackInternal);
-            int step = (int)(actor.GetComponentInChildren<AnimatorTimeInfo>().SkillPreInternal * 1000 / ms);
+        { 
+            int step = (int)( 0.3 * 1000 / ms);     // 延迟释放攻击，与动画配合
             List<Collider2D> HurtTargets = new List<Collider2D>();
             do
             {
@@ -50,7 +49,7 @@ namespace NotionWorld.Actions
                         {
                             moveTowardFragment.Direction = ( t.transform.position - actor.transform.position);
                             moveTowardFragment.InternalTime = 0.2f;
-                            moveTowardFragment.Speed = 0.5f;
+                            moveTowardFragment.Speed = 0.2f;
                             moveTowardFragment.TakeEffect(t.GetComponent<Entity>());
                             healthModifier.TakeEffect(t.GetComponent<Entity>());
 
