@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, ISubscriber<JoyStickMovedEventArg
     {
         var energy = entity.GetCapability<Energy>();
 
-        if (comboController.ComboValue == ChargeEnergyCombo)
+        if (comboController.ComboValue % ChargeEnergyCombo >= 0)
         {
             energy.Value += EnergyPerCharge;
             comboController.ComboValue -= ChargeEnergyCombo;
