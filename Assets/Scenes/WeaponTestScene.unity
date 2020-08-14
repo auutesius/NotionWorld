@@ -2345,6 +2345,11 @@ PrefabInstance:
       propertyPath: ripple
       value: 
       objectReference: {fileID: 1859289641}
+    - target: {fileID: 7089556425680789470, guid: 1450b81a3f25ef843a02c1753ac4aba1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1450b81a3f25ef843a02c1753ac4aba1, type: 3}
 --- !u!4 &7801308883528406159

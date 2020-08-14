@@ -38,7 +38,11 @@ public class PlayerController : MonoBehaviour, ISubscriber<JoyStickMovedEventArg
 
     private void Update()
     {
-        EnergyUpdate();
+        if (entity != null)
+        {
+            EnergyUpdate(); 
+
+        }
     }
 
     private void EnergyUpdate()
