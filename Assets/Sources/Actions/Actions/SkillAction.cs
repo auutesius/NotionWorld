@@ -10,6 +10,7 @@ namespace NotionWorld.Actions
     public sealed class SkillAction : EntityAction
     {
         public string SkillType;
+
         // TODO 输入端未完成
         public Vector2 TouchPoint = new Vector2(5, 0);
 
@@ -18,7 +19,7 @@ namespace NotionWorld.Actions
             if (SkillType == "RotateAttackSkill")
             {
                 //TODO 技能持续时间暂定3s，等待完善
-                int SkillInternal = 3;
+                float SkillInternal = 1.5f;
 
                 // 暂停自动攻击
                 StopAutoAttackFragment stopAutoAttackFragment = new StopAutoAttackFragment(SkillInternal);
@@ -28,6 +29,7 @@ namespace NotionWorld.Actions
                 AreaAttackFragment areaAttackFragment = new AreaAttackFragment();
                 areaAttackFragment.Damage = 35;
                 areaAttackFragment.SkillInternal = SkillInternal;
+                areaAttackFragment.HitPower = 0.4f;
                 areaAttackFragment.TakeEffect(entity);
 
                 // 移速增加

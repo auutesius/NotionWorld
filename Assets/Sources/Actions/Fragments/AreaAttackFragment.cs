@@ -11,8 +11,9 @@ namespace NotionWorld.Actions
 {
     public sealed class AreaAttackFragment : Fragment
     {
-        public int SkillInternal;
+        public float SkillInternal;
         public int Damage;
+        public float HitPower;
         public override void TakeEffect(Entity actor)
         {
             Delay(50, actor);
@@ -49,7 +50,7 @@ namespace NotionWorld.Actions
                         {
                             moveTowardFragment.Direction = ( t.transform.position - actor.transform.position);
                             moveTowardFragment.InternalTime = 0.2f;
-                            moveTowardFragment.Speed = 0.2f;
+                            moveTowardFragment.Speed = HitPower;
                             moveTowardFragment.TakeEffect(t.GetComponent<Entity>());
                             healthModifier.TakeEffect(t.GetComponent<Entity>());
 

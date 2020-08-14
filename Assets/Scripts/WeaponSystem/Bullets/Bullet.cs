@@ -125,7 +125,7 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag(AttackTag))
             {
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
-                /*
+
                 MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
                 moveTowardFragment.InternalTime = 0.5f;
                 moveTowardFragment.Speed = 0.2f;
@@ -151,7 +151,7 @@ public class Bullet : MonoBehaviour
 
                     collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                 }
-                */
+
             }
         }
         HitRecycleNow();

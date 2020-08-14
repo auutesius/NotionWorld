@@ -38,27 +38,16 @@ namespace NotionWorld.Actions
             float attackAngle = 100f * (AttackDir.x > 0 ? 1f : -1f);      // 挥砍幅度（度）
             float attackInternal = Count * 0.1f;   // 挥砍动作所占时间
             float prepareInternal = (Count - attackInternal) / 2;
-                bool a = true; bool b = true;
             while (step < Count)
             {
                 Debug.Log(step * ms);
                 if (actor == null) { break; }
                 if (step < prepareInternal)
                 {
-                    if (b)
-                    {
-                        Debug.Log("start in animator" + Time.time);
-                        b = false;
-                    }
                     WeaponImage.rotation = WeaponImage.rotation * Quaternion.Euler(new Vector3(0f, 0f, (attackAngle / 2) / prepareInternal));
                 }
                 else if(step < attackInternal + prepareInternal)
                 {
-                    if (a)
-                    {
-                        Debug.Log("Attack" + Time.time);
-                        a = false;
-                    }
                     WeaponImage.rotation = WeaponImage.rotation * Quaternion.Euler(new Vector3(0f, 0f, -(attackAngle) / attackInternal));
                 }
                 else if (step < attackInternal + prepareInternal*2)

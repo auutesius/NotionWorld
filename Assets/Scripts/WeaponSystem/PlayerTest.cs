@@ -11,7 +11,6 @@ public class PlayerTest : MonoBehaviour
 {
     public float speed;
     public SkillControllerForPlayer skillController;
-    public WeaponController WC;
     private Rigidbody2D RB;
     private Entity entity;
     Energy energy;
@@ -37,12 +36,6 @@ public class PlayerTest : MonoBehaviour
             ChargeEnergy();
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Vector3 attackDir = Vector2.right;
-            WC.transform.rotation = WC.transform.rotation * Quaternion.Euler(new Vector3(0f,0f,45f));
-            // Vector3 UpDir = 
-        }
         // Debug.Log(enmey.GetCapability<Health>().Value);
 
         if (skillController.GetIsWorking())

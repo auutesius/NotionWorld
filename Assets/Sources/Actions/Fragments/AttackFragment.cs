@@ -25,9 +25,7 @@ namespace NotionWorld.Actions
         }
         private async void Delay(int ms, Entity actor)
         {
-            Debug.Log("start" + Time.time);
             await Task.Delay(ms);
-            Debug.Log("end" + Time.time);
 
             float euler = AttackDir.y > 0 ? -(Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI : -((Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI - 180);
             GameObject bullet = ObjectPool.GetObject(actor.GetCapability<Attack>().AttackType, "Bullets");

@@ -276,37 +276,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0041656494
-      value: 0.1816101
+      time: 0
+      value: 0.2
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5155315
-      value: 0.19257939
-      inSlope: 0.05804075
-      outSlope: 0.05804075
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.25430024
-      outWeight: 0.251444
-    - serializedVersion: 3
-      time: 0.9741862
-      value: 0.20437902
+      time: 1
+      value: 0.2
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   Speed: 2
-  AutoRecycleTime: 1
+  AutoRecycleTime: 0.5
   Scale: {x: 1, y: 1, z: 1}
   HitAudioSource: {fileID: 5517540041709914817}
   HitEffect: WaterBombEffect

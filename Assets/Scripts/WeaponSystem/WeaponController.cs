@@ -44,14 +44,14 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        if (CheckAttackTarget() != null || IsColdingDown)
+        if (CheckAttackTarget() != null)
         {
+            Vector3 aimForward = CheckAttackTarget().transform.position - transform.position;
             if (!IsColdingDown)
             {
-                Vector3 aimForward = CheckAttackTarget().transform.position - transform.position;
                 StartCoroutine(WeaponCD(aimForward));
-                WeaponLookAt(aimForward);
             }
+            WeaponLookAt(aimForward);
         }
         else
         {
