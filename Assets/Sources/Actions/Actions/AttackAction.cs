@@ -16,18 +16,27 @@ namespace NotionWorld.Actions
         public string AttackTag;
 
         private AttackFragment attack;
-        private WeaponAttackSimulaterFragment weaponAnimator;
+        // private WeaponAttackSimulaterFragment weaponAnimator;
         private AudioCreateFragment audioCreateFragment;
+        private WeaponAttackAnimator weaponAnimator;
 
         public override void TakeAction(Entity entity)
-        {            
+        { 
+            /*
             if (weaponAnimator == null)
             {
                 weaponAnimator = new WeaponAttackSimulaterFragment();
             }
             weaponAnimator.AttackDir = AttackDir;
             weaponAnimator.TakeEffect(entity);
+            */
 
+            if (weaponAnimator == null)
+            {
+                weaponAnimator = new WeaponAttackAnimator();
+            }
+            weaponAnimator.IsLeftAttack = AttackDir.x < 0;
+            weaponAnimator.TakeEffect(entity);
 
             if (attack == null)
             {
@@ -51,3 +60,4 @@ namespace NotionWorld.Actions
     }
 
 }
+ 

@@ -121,13 +121,13 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag(AttackTag))
             {
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
-
+                /*
                 MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
                 moveTowardFragment.InternalTime = 0.5f;
                 moveTowardFragment.Speed = 0.2f;
                 moveTowardFragment.Direction = collision.transform.position - transform.position;
                 moveTowardFragment.TakeEffect(collision.gameObject.GetComponent<Entity>());
-
+                */
                 AnimatorParameterFragment animator = new AnimatorParameterFragment();
                 animator.Animator = collision.transform.GetChild(0).GetComponent<Animator>();
                 animator.Name = "Hit";
