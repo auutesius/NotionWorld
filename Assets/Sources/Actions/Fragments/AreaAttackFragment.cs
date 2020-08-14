@@ -20,7 +20,7 @@ namespace NotionWorld.Actions
         }
         private async void Delay(float ms, Entity actor)
         { 
-            int step = (int)( 0.3 * 1000 / ms);     // 延迟释放攻击，与动画配合
+            int step = (int)( 0.2 * 1000 / ms);     // 延迟释放攻击，与动画配合
             List<Collider2D> HurtTargets = new List<Collider2D>();
             do
             {

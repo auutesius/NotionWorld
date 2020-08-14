@@ -40,7 +40,6 @@ namespace NotionWorld.Actions
             float prepareInternal = (Count - attackInternal) / 2;
             while (step < Count)
             {
-                Debug.Log(step * ms);
                 if (actor == null) { break; }
                 if (step < prepareInternal)
                 {
@@ -57,8 +56,6 @@ namespace NotionWorld.Actions
                 step++;
                 await Task.Delay(ms);
             }
-
-            Debug.Log("exit");
         }
     }
 

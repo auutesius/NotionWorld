@@ -39,5 +39,9 @@ public class EntityMovement : MonoBehaviour
             action.Movement = Time.fixedDeltaTime * Direction * speed.Value;
             action.TakeAction(entity);
         }
+        else if (Direction == Vector2.zero)
+        {
+            action.UnTakeEffect(entity);
+        }
     }
 }

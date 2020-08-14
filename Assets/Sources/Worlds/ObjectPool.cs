@@ -49,7 +49,7 @@ namespace NotionWorld.Worlds
                 else
                 {
                     //加载预设体
-                    prefab = Resources.Load<GameObject>("Prefabs/" + path + "/" + objName);
+                    prefab = Resources.Load<GameObject>(string.Format("Prefabs/{0}/{1}",path,objName));
                     //更新字典
                     prefabs.Add(objName, prefab);
                 }

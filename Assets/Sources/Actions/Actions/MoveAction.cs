@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Entities;
+using NotionWorld.Modifiers;
 
 namespace NotionWorld.Actions
 {
@@ -15,6 +16,7 @@ namespace NotionWorld.Actions
         private MoveFragment move;
         private AnimatorParameterFragment animatorFragment;
         private AnimatorDirFragment dir;
+        private AudioPlayModifier audioPlayModifier;
 
         public override void TakeAction(Entity entity)
         {
@@ -41,6 +43,41 @@ namespace NotionWorld.Actions
                 animatorFragment.TakeEffect();
                 dir.Movement = Movement;
                 dir.TakeEffect(entity);
+            }
+
+            if (audioPlayModifier == null)
+            {
+                audioPlayModifier = new AudioPlayModifier();
+                audioPlayModifier.Audio = entity.transform.GetComponent<AudioSource>();
+            }
+            if (!audioPlayModifier.Audio.isPlaying)
+            {
+                audioPlayModifier.TakeEffect();
+            }
+        }
+
+        public void UnTakeEffect(Entity entity)
+        {
+            if (animatorFragment == null)
+            {
+                animatorFragment = new AnimatorParameterFragment();
+                animatorFragment.Name = "Move";
+                animatorFragment.Animator = entity.transform.GetChild(0).GetComponent<Animator>();
+            }
+            if (animatorFragment.Animator != null)
+            {
+                animatorFragment.Value = false;
+                animatorFragment.TakeEffect();
+            }
+
+            if (audioPlayModifier == null)
+            {
+                audioPlayModifier = new AudioPlayModifier();
+                audioPlayModifier.Audio = entity.transform.GetComponent<AudioSource>();
+            }
+            if (audioPlayModifier.Audio.isPlaying)
+            {
+                audioPlayModifier.UnTakeEffect();
             }
 
         }

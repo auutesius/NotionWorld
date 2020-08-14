@@ -16,18 +16,18 @@ public class Bullet : MonoBehaviour
     [Tooltip("子弹自动回收时间")]
     public float AutoRecycleTime;//最长生存时间（超过该时间会被自动回收）
     [HideInInspector] public Vector3 Scale = new Vector3(1, 1, 1);
-    
+
+    public string AttackTag;
+
     protected float NowSpeed;//当前速度
     protected float Nowtime = 0;//当前飞行的时间
 
     protected int DamageValue;
-    protected string AttackTag;
     protected string ActorTag;
 
     HealthModifier modifier;
 
     [Header("音效与特效")]
-    [Tooltip("撞击的音效")] public AudioSource HitAudioSource;
     [Tooltip("撞击的特效名")] public string HitEffect;
     [Tooltip("自动摧毁的的特效名")] public string DestoryEffect;
     
@@ -95,10 +95,6 @@ public class Bullet : MonoBehaviour
                 GameObject shootHitEffect = ObjectPool.GetObject(HitEffect, "Effects");
                 // shootHitEffect.transform.Rotate(m_euler);
                 shootHitEffect.transform.position = transform.position + transform.up.normalized * 0.5f + Vector3.forward * -5f;
-            }
-            if (HitAudioSource != null)
-            {
-                HitAudioSource.Play();
             }
             Nowtime = 0;
             

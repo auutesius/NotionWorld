@@ -19,5 +19,12 @@ namespace NotionWorld.Modifiers
                 Audio.Play();
             }
         }
+        public void UnTakeEffect()
+        {
+            if (Audio != null)
+            {
+                Audio.Stop();
+            }
+        }
     }
 }

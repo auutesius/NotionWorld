@@ -13,10 +13,6 @@ public class BombBullet : Bullet
 
     public int GravitationInternal; // 吸引力效用时间
     public int GravitationPower;    // 吸引力
-
-
-    private Vector3 TargetPos;
-    HealthModifier healthModifier;
     GravitationModifier gravitationModifier;
 
 
@@ -29,7 +25,6 @@ public class BombBullet : Bullet
         transform.Rotate(Euler);
         AttackTag = TargetTag;
         gameObject.layer = LayerMask.NameToLayer(TargetTag == "Player" ? "Enemy" : "Player");
-        healthModifier = new HealthModifier(-DamageValue);
     }
    
 
@@ -66,10 +61,6 @@ public class BombBullet : Bullet
             {
                 GameObject shootHitEffect = ObjectPool.GetObject(HitEffect, "Effects");
                 shootHitEffect.transform.position = transform.position + Vector3.forward * 10f;
-            }
-            if (HitAudioSource != null)
-            {
-                HitAudioSource.Play();
             }
             Nowtime = 0;
 

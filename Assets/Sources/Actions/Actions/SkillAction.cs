@@ -18,8 +18,8 @@ namespace NotionWorld.Actions
         {
             if (SkillType == "RotateAttackSkill")
             {
-                //TODO 技能持续时间暂定3s，等待完善
-                float SkillInternal = 1.5f;
+                //TODO 技能持续时间暂定1s，等待完善,调整后记得调weapon上的动画时间
+                float SkillInternal = 1f;
 
                 // 暂停自动攻击
                 StopAutoAttackFragment stopAutoAttackFragment = new StopAutoAttackFragment(SkillInternal);
@@ -41,6 +41,14 @@ namespace NotionWorld.Actions
                 RotateAttackAnimatorFragment rotateAttackAnimatorFragment = new RotateAttackAnimatorFragment();
                 rotateAttackAnimatorFragment.InteralTime = SkillInternal;
                 rotateAttackAnimatorFragment.TakeEffect(entity);
+
+                // 音效表示
+                AudioCreateFragment audioPlayFragment = new AudioCreateFragment();
+                audioPlayFragment.AudioName = SkillType;
+                audioPlayFragment.PlayInternal = 0;
+                audioPlayFragment.TakeEffect(entity);
+                audioPlayFragment.PlayInternal = SkillInternal/2;
+                audioPlayFragment.TakeEffect(entity);
             }
             else if (SkillType == "BombSkill")
             {
@@ -57,6 +65,12 @@ namespace NotionWorld.Actions
                 bombFragement.TargetPos = TouchPoint;
                 bombFragement.Damage = 30;
                 bombFragement.TakeEffect(entity);
+
+                // 音效表示
+                AudioCreateFragment audioPlayFragment = new AudioCreateFragment();
+                audioPlayFragment.AudioName = SkillType;
+                audioPlayFragment.PlayInternal = 0f;
+                audioPlayFragment.TakeEffect(entity);
             }
             else if (SkillType == "RushSkill")
             {
@@ -93,6 +107,12 @@ namespace NotionWorld.Actions
                 animatorFragment.Animator = entity.transform.GetChild(0).GetComponent<Animator>();
                 animatorFragment.Name = "Rush";
                 animatorFragment.TakeEffect();
+
+                // 音效表示
+                AudioCreateFragment audioPlayFragment = new AudioCreateFragment();
+                audioPlayFragment.AudioName = SkillType;
+                audioPlayFragment.PlayInternal = 0f;
+                audioPlayFragment.TakeEffect(entity);
             }
             else
             {
