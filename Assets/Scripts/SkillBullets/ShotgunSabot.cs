@@ -38,6 +38,7 @@ public sealed class ShotgunSabot : SkillBullet
 
         Vector2 movement = transform.right * speed * Time.fixedDeltaTime;
         Vector2 position = transform.position;
+        Vector2 originDirection = transform.right;
 
         while (timer > 0)
         {
@@ -51,6 +52,7 @@ public sealed class ShotgunSabot : SkillBullet
         {
             CreateBarrage();
             timer = waveInterval;
+            transform.right = originDirection;
 
             while (timer > 0)
             {
@@ -58,13 +60,20 @@ public sealed class ShotgunSabot : SkillBullet
                 yield return wait;
             }
         }
-
         ObjectPool.RecycleObject(this.gameObject);
     }
 
     private void CreateBarrage()
     {
-        float deltaAngle = angle / (count - 1);
+        float deltaAngle;
+        if(count > 1)
+        {
+            deltaAngle = angle / (count - 1);
+        }
+        else
+        {
+            deltaAngle = angle;
+        }
         transform.Rotate(0, 0, -angle / 2);
 
         for (int i = 0; i < count; i++)

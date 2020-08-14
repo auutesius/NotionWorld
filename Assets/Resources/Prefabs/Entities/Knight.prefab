@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6641488572013429241}
   - component: {fileID: 6641488572013429221}
   - component: {fileID: 6235786569774248435}
-  - component: {fileID: -3871897855064264711}
-  - component: {fileID: 9102593123919814181}
   - component: {fileID: -7739919911167136386}
+  - component: {fileID: 1954546361366015219}
+  - component: {fileID: 778931178429286740}
   m_Layer: 9
   m_Name: Knight
   m_TagString: Enemies
@@ -116,65 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   archeType: {fileID: 11400000, guid: ea700b70502b0bb4c8aaa5e344316d1c, type: 2}
---- !u!50 &-3871897855064264711
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6641488572013429218}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!60 &9102593123919814181
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6641488572013429218}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4, y: 2.1}
-    newSize: {x: 0.56, y: 0.84}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.2, y: 0.375}
-      - {x: -0.425, y: 0.475}
-      - {x: -0.7, y: 0.475}
-      - {x: -0.7, y: 0.275}
-      - {x: -0.475, y: -0.075}
-      - {x: -0.475, y: -0.4}
-      - {x: -0.15, y: -0.575}
-      - {x: -0.075, y: -0.725}
-      - {x: 0, y: -0.725}
-      - {x: 0.275, y: -0.55}
-      - {x: 0.375, y: -0.22500001}
-      - {x: 0.375, y: 0.125}
-      - {x: 0.2, y: 0.4}
 --- !u!114 &-7739919911167136386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +135,43 @@ MonoBehaviour:
   AimImage: {fileID: 0}
   AimRange: {fileID: 0}
   HasArrowPointer: 1
+--- !u!50 &1954546361366015219
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641488572013429218}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &778931178429286740
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641488572013429218}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &7738217347143710442
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7738217347143710442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0.1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6641488572013429241}

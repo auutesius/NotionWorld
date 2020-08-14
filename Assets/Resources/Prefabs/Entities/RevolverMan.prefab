@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5187525208212355457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0.2, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8625852640901320452}
@@ -163,9 +163,9 @@ GameObject:
   - component: {fileID: 8625852640901320452}
   - component: {fileID: 8625852640901320472}
   - component: {fileID: 9013839436348079886}
-  - component: {fileID: 6633866467386842299}
-  - component: {fileID: 697220337737696588}
   - component: {fileID: 4848462089277412741}
+  - component: {fileID: 4089665715023829191}
+  - component: {fileID: 3286607436538670403}
   m_Layer: 9
   m_Name: RevolverMan
   m_TagString: Enemies
@@ -256,80 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   archeType: {fileID: 11400000, guid: abdf332d155eff8428e902c2cb0a495d, type: 2}
---- !u!50 &6633866467386842299
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625852640901320479}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!60 &697220337737696588
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625852640901320479}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.26599583, y: -0.045090508}
-      - {x: 0.20666015, y: -0.028233614}
-      - {x: 0.205325, y: 0.12311222}
-      - {x: 0.11772119, y: 0.14128424}
-      - {x: 0.10293033, y: 0.03994605}
-      - {x: 0.070065014, y: 0.028151695}
-      - {x: 0.04491952, y: 0.13855988}
-      - {x: -0.0004576519, y: 0.14985643}
-      - {x: -0.11984664, y: 0.0918307}
-      - {x: -0.12370676, y: 0.095083825}
-      - {x: -0.21147278, y: 0.029493101}
-      - {x: -0.35250306, y: 0.010393597}
-      - {x: -0.4123037, y: -0.39280093}
-      - {x: -0.43077713, y: -0.5713777}
-      - {x: -0.29307696, y: -0.56224656}
-      - {x: -0.25029215, y: -0.6386014}
-      - {x: -0.07500861, y: -0.68136245}
-      - {x: 0.21970454, y: -0.5510456}
-      - {x: 0.3031857, y: -0.5249579}
-      - {x: 0.3084031, y: -0.46756476}
-      - {x: 0.26144516, y: -0.4571297}
-      - {x: 0.24622375, y: -0.38838613}
-      - {x: 0.21119705, y: -0.3344929}
-      - {x: 0.30931973, y: -0.3465659}
-      - {x: 0.2955245, y: -0.27029043}
-      - {x: 0.34350267, y: -0.26761764}
-      - {x: 0.34622374, y: -0.13882126}
-      - {x: 0.28861672, y: -0.15708864}
 --- !u!114 &4848462089277412741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,3 +275,40 @@ MonoBehaviour:
   AimImage: {fileID: 0}
   AimRange: {fileID: 0}
   HasArrowPointer: 1
+--- !u!50 &4089665715023829191
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625852640901320479}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &3286607436538670403
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625852640901320479}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4

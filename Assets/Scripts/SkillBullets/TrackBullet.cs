@@ -20,7 +20,7 @@ public sealed class TrackBullet : SkillBullet
     private HealthModifier healthModifier;
     private AnimatorTriggerModifier animatorTrigger;
 
-     private void Awake()
+    private void Awake()
     {
         healthModifier = new HealthModifier()
         {
@@ -45,22 +45,18 @@ public sealed class TrackBullet : SkillBullet
         WaitForFixedUpdate wait = new WaitForFixedUpdate();
 
         float timer = time;
+        float deltaMax = maxTrackAngle * Time.fixedDeltaTime;
         while (timer > 0)
         {
+            Vector2 targetDirection = (Target.transform.position - transform.position).normalized;
+            float signedAngle = Vector2.SignedAngle(transform.right, targetDirection);
+            float angle = Mathf.Abs(signedAngle);
+            angle = angle > deltaMax ? deltaMax : angle;
+            angle = Mathf.Sign(signedAngle) * angle;
+            transform.Rotate(0, 0, angle);
             Vector2 movement = transform.right * speed * Time.fixedDeltaTime;
 
-            Vector2 moveDirection = transform.right;
-            Vector2 targetDirection = Target.transform.position - transform.position;
-            targetDirection = targetDirection.normalized;
-
-            float targetAngle = Vector2.Angle(transform.right, targetDirection);
-            float angle = maxTrackAngle < targetAngle ? maxTrackAngle : targetAngle;
-
-            moveDirection = Vector2.Lerp(moveDirection, targetDirection, angle / targetAngle);
-
-            Vector2 position =  transform.position;
-            position += moveDirection * speed * Time.fixedDeltaTime;;
-            transform.position = position;
+            transform.position += (Vector3)movement;
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }

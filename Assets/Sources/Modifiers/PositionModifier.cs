@@ -21,7 +21,7 @@ namespace NotionWorld.Modifiers
         {
             if(Transform != null)
             {
-                Transform.position += DeltaPosition;
+                Transform.Translate(DeltaPosition);
             }
         }
     }
