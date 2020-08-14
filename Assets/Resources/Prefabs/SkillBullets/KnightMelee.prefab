@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coldDown: 2
   damage: 20
-  radius: 1.56
+  radius: 1.5625
   time: 0.2
   angle: 180

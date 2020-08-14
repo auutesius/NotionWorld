@@ -19,6 +19,8 @@ public sealed class RectDamage : SkillBullet
 
     public float warningTime;
 
+    public GameObject warningObject;
+
     private HealthModifier healthModifier;
 
     private AnimatorTriggerModifier animatorTrigger;
@@ -53,6 +55,7 @@ public sealed class RectDamage : SkillBullet
         float timer = warningTime;
 
         boxCollider.enabled = false;
+        warningObject.SetActive(true);
 
         while (timer > 0)
         {
@@ -68,6 +71,7 @@ public sealed class RectDamage : SkillBullet
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }
+        warningObject.SetActive(false);
         boxCollider.enabled = false;
         ObjectPool.RecycleObject(this.gameObject);
     }
