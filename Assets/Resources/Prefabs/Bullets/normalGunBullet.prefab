@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 5626916370863419892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.11, y: 0.23, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5.031195, y: 5.031195, z: 5.031195}
   m_Children:
   - {fileID: 8220086120040553901}
   - {fileID: 5249618474917726394}
@@ -319,7 +319,7 @@ MonoBehaviour:
   ShadowSmooth: 2
   SmoothRadius: 0
   LightVolumn: 1
-  LightDistance: 0.5
+  LightDistance: 10
   DebugLight: 0
   DebugShadow: 0
   LightType: 0
