@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NotionWorld.Capabilities;
 using NotionWorld.Events;
+using System.Threading.Tasks;
 
 namespace NotionWorld.Entities
 {
@@ -33,6 +34,6 @@ namespace NotionWorld.Entities
                 }
             }
         }
-    }
+}
 
 }

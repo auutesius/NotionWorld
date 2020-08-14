@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 3195415091449558254}
   - component: {fileID: 7085446184879035516}
   - component: {fileID: 3606465232521757853}
+  - component: {fileID: 147874848963165837}
   m_Layer: 9
   m_Name: MegaOctopus
   m_TagString: Enemies
@@ -263,6 +264,25 @@ PolygonCollider2D:
       - {x: -0.4923554, y: -0.50364166}
       - {x: 0.50667006, y: -0.49887007}
       - {x: 0.5025364, y: 0.49510527}
+--- !u!114 &147874848963165837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808800772670817535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5f52eb402956c43bfe4108b98d83f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  HealthSlider: {fileID: 0}
+  EnergySlider: {fileID: 0}
+  ComboCount: {fileID: 0}
+  AimImage: {fileID: 0}
+  AimRange: {fileID: 0}
+  HasArrowPointer: 1
 --- !u!1 &3110972978185400351
 GameObject:
   m_ObjectHideFlags: 0
