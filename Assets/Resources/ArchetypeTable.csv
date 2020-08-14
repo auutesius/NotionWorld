@@ -1,5 +1,5 @@
 ID,Health,MaxHealth,Speed,Attack,Interval,Range,AttackType,BulletSpeed,Energy,MaxEnergy,Recharge,Skill
-Player,1000,1000,3.5,30,2,2,normalMelee,0.8,8,10,7,RotateAttackSkill BombSkill RushSkill 
+Player,1000,1000,3.5,30,2,5,normalMelee,0.8,8,10,7,RotateAttackSkill BombSkill RushSkill 
 Fool,150,150,1.5,15,1,0.3125,normalMelee,1,,,,
 RevolverMan,120,120,2,15,1,10,normalGunBullet,4,,,,
 ShotgunMan,110,110,2,10,1,10,normalGunBullet,1,,,,
