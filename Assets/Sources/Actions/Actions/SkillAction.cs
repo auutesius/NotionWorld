@@ -34,7 +34,7 @@ namespace NotionWorld.Actions
 
                 // 移速增加
                 SpeedChangeMoveFragment speedChangeMoveFragment = new SpeedChangeMoveFragment();
-                speedChangeMoveFragment.InternalTime = SkillInternal;       
+                speedChangeMoveFragment.InternalTime = SkillInternal;
                 speedChangeMoveFragment.TakeEffect(entity);
 
                 // 动画表示
@@ -47,8 +47,18 @@ namespace NotionWorld.Actions
                 audioPlayFragment.AudioName = SkillType;
                 audioPlayFragment.PlayInternal = 0;
                 audioPlayFragment.TakeEffect(entity);
-                audioPlayFragment.PlayInternal = SkillInternal/2;
+                audioPlayFragment.PlayInternal = SkillInternal / 2;
                 audioPlayFragment.TakeEffect(entity);
+
+                //格挡子弹
+
+                entity.GetComponent<CircleCollider2D>().enabled = true;
+                InvincibleFragment invincibleFragment = new InvincibleFragment();
+                invincibleFragment.InternalTime = 1f;   // 无敌时间
+                entity.StartCoroutine(CloseCircleCollider(SkillInternal,entity));
+                
+
+
             }
             else if (SkillType == "BombSkill")
             {
@@ -118,6 +128,11 @@ namespace NotionWorld.Actions
             {
                 throw new ArgumentException("SkillType is out of consider.");
             }
+        }
+        IEnumerator CloseCircleCollider(float time, Entity entity)
+        {
+            yield return new WaitForSeconds(time);
+            entity.GetComponent<CircleCollider2D>().enabled = false;;
         }
     }
 
