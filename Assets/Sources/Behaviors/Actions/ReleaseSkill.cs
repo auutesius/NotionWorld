@@ -47,10 +47,6 @@ namespace NotionWorld.Behaviors
             else
             {
                 coldDownTimer -= Time.deltaTime;
-                if(coldDownTimer > 1)
-                {
-                    Debug.Log(coldDownTimer);
-                }
                 return TaskStatus.Failure;
             }
         }
