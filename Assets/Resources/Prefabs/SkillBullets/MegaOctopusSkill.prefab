@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coldDown: 6
   bullets:
-  - OctopusSummon
+  - MegaMortarStrike
+  - MegaRectDamage
   - OctopusSummon
   interval: 3

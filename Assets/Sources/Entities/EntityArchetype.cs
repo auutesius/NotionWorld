@@ -83,6 +83,7 @@ namespace NotionWorld.Entities
                     SkillTypes = (row[index] as string).Split(' ')
                 };
             },
+            ["BuffList"] = (DataRow row, ref int index) => {return new BuffList() ;}
         };
 
         internal Capability[] CreateCapabilities()
