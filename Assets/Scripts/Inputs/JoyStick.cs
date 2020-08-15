@@ -45,9 +45,9 @@ public class JoyStick : MonoBehaviour
     public void DoubleTap(){
         Debug.Log("DoubleTap");
         skillController.InvincibleButton();
-        skillController.ripple.Emit(new Vector2(0f,0f));
-        Animator playerAnim = GameObject.Find("Player").transform.GetChild(0).GetComponent<Animator>();
-        playerAnim.Play("muteki");
+        //skillController.ripple.Emit(new Vector2(0f,0f));
+        // Animator playerAnim = GameObject.Find("Player").transform.GetChild(0).GetComponent<Animator>();
+        // playerAnim.Play("muteki");
         Debug.Log("Muteki!!!!");
     }
 
