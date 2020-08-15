@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fda2e3a6bfe64a408b9a6306ba6699b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coldDown: 4
+  coldDown: 6
   bullets:
   - OctopusSummon
   - OctopusSummon
-  interval: 2
+  interval: 3

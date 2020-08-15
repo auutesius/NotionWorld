@@ -18,7 +18,11 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject player;
 
-    private const float interval = 1.0F;
+    private const float refreshInterval = 1.0F;
+
+    public float enterspeed;
+
+    public float enterDistance;
 
     public float waveInterval = 10F;
 
@@ -42,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator SpawnCorotinue()
     {
-        WaitForSeconds second = new WaitForSeconds(interval);
+        WaitForSeconds second = new WaitForSeconds(refreshInterval);
         int i = 0;
         float timer = 0;
         DataRow row = null;
@@ -63,6 +67,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 string id = row["ID"] as string;
                 Vector2 position = new Vector2(float.Parse(row["PositionX"] as string), float.Parse(row["PositionY"] as string));
+                //StartCoroutine(SpawnEnemyCorotinue(id, position));
                 SpawnEnemy(id, position);
                 i++;
                 row = null;
@@ -75,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
             yield return second;
-            timer += interval;
+            timer += refreshInterval;
         }
         EventCenter.DispatchEvent(new SpawnFinishedEventArgs(timer));
     }
@@ -83,7 +88,37 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(string id, Vector2 position)
     {
         var enemy = ObjectPool.GetObject(id, "Entities");
+
         enemy.transform.position = position;
+
+        Behavior behavior = enemy.GetComponent<Behavior>();
+        if(behavior != null)
+        {
+            behavior.SetVariableValue("TrackTarget", player);
+            behavior.EnableBehavior();
+            behavior.Start();
+        }
+    }
+
+    private IEnumerator SpawnEnemyCorotinue(string id, Vector2 position)
+    {
+        var enemy = ObjectPool.GetObject(id, "Entities");
+        int layer = enemy.layer;
+        enemy.layer = LayerMask.NameToLayer("Ingore Collision");
+        enemy.transform.position = position;
+        Vector2 currentPosition = position;
+        Vector2 targetPosition = Physics2D.Raycast(currentPosition, (Vector2)player.transform.position - currentPosition, 20, 1 << LayerMask.NameToLayer("Default")).point;
+    
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();
+        float timer = ((targetPosition - currentPosition).magnitude + enterDistance) / enterspeed;
+        Vector2 movement = (targetPosition - currentPosition).normalized * enterspeed * Time.fixedDeltaTime;
+        while(timer > 0)
+        {
+            enemy.transform.position += (Vector3)movement;
+            timer -= Time.fixedDeltaTime;
+            yield return wait;
+        }
+        enemy.layer = layer;
 
         Behavior behavior = enemy.GetComponent<Behavior>();
         if(behavior != null)
@@ -100,11 +135,11 @@ public class EnemySpawner : MonoBehaviour
         remainSecondsUI.text = Mathf.RoundToInt(nextWaveTime).ToString();
         inWaveTime = true;
         
-        WaitForSeconds second = new WaitForSeconds(interval);
+        WaitForSeconds second = new WaitForSeconds(refreshInterval);
         while(nextWaveTime > 0)
         {
             yield return second;
-            nextWaveTime -= interval;
+            nextWaveTime -= refreshInterval;
 
             remainSecondsUI.text = Mathf.RoundToInt(nextWaveTime).ToString();
         }

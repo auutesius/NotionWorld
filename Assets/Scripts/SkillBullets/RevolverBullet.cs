@@ -13,7 +13,7 @@ public sealed class RevolverBullet : SkillBullet
     public int damage;
     public float speed;
     public float time;
-    [Tooltip("撞击的特效名")] public string HitEffectName;
+    public string HitEffectName;
 
     private HealthModifier healthModifier;
     private AnimatorTriggerModifier animatorTrigger;

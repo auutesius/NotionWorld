@@ -14,4 +14,6 @@ public sealed class Mortar : SkillBullet
     {
        
     }
+
+    
 }

@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 8829303218775232307}
   - component: {fileID: 8219704313373933855}
   - component: {fileID: 5790923472427128852}
+  - component: {fileID: 7036937423239191977}
   m_Layer: 9
   m_Name: Fool
   m_TagString: Enemies
@@ -260,3 +261,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!114 &7036937423239191977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184839286196928890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aecdb41efb471f419a1c4b69275ff95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

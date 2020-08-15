@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
     public GameObject weapon;
     public string AttackTag;
     [HideInInspector] public Vector3 forward;
-    [HideInInspector] public bool IsSkilling;
+    public bool IsSkilling;
 
     private bool IsColdingDown;
     private Entity entity;
