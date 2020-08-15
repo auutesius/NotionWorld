@@ -53,6 +53,7 @@ namespace NotionWorld.Actions
                 //格挡子弹
 
                 entity.GetComponent<CircleCollider2D>().enabled = true;
+                entity.transform.GetChild(2).gameObject.SetActive(true);
                 InvincibleFragment invincibleFragment = new InvincibleFragment();
                 invincibleFragment.InternalTime = 1f;   // 无敌时间
                 entity.StartCoroutine(CloseCircleCollider(SkillInternal,entity));
@@ -132,7 +133,8 @@ namespace NotionWorld.Actions
         IEnumerator CloseCircleCollider(float time, Entity entity)
         {
             yield return new WaitForSeconds(time);
-            entity.GetComponent<CircleCollider2D>().enabled = false;;
+            entity.transform.GetChild(2).gameObject.SetActive(false);
+            //entity.GetComponent<CircleCollider2D>().enabled = false;;
         }
     }
 
