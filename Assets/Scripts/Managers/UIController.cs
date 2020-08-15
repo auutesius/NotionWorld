@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour
     {
         if (ComboCount != null)
         {
-            ComboCount.text = "Combo" +  value;
+            ComboCount.text = value.ToString();
         }
     }
 
