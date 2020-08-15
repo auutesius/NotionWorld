@@ -9,6 +9,7 @@ public class ComboController : MonoBehaviour, ISubscriber<ComboEvenArg>
     public float ClearInternal;
     private float curTime;
     [HideInInspector] public int ComboValue;
+    public Animator imageAnimator;
     private void Awake()
     {
         EventCenter.Subscribe(this);
@@ -16,6 +17,7 @@ public class ComboController : MonoBehaviour, ISubscriber<ComboEvenArg>
     public void OnEventOccurred(ComboEvenArg eventArgs)
     {
         ComboValue += eventArgs.Value;
+        imageAnimator.Play("ComboSlot");
         curTime = 0;
     }
 

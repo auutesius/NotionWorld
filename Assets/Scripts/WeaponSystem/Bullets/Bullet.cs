@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     [Header("音效与特效")]
     [Tooltip("撞击的特效名")] public string HitEffect;
-    [Tooltip("自动摧毁的的特效名")] public string DestoryEffect;
+    [Tooltip("自动摧毁的特效名")] public string DestoryEffect;
     
     protected bool IsNotRecycled;//标记是否被回收的开关
     protected Vector3 m_euler;
@@ -45,6 +45,7 @@ public class Bullet : MonoBehaviour
         AttackTag = TargetTag;
         gameObject.layer = LayerMask.NameToLayer(TargetTag == "Player" ? "Enemy" : "Player");
         modifier = new HealthModifier(-DamageValue);
+        
     }
    
 
@@ -94,7 +95,7 @@ public class Bullet : MonoBehaviour
             {
                 GameObject shootHitEffect = ObjectPool.GetObject(HitEffect, "Effects");
                 // shootHitEffect.transform.Rotate(m_euler);
-                shootHitEffect.transform.position = transform.position + transform.up.normalized * 0.5f + Vector3.forward * -5f;
+                shootHitEffect.transform.position = transform.position;// + transform.up.normalized * 0.5f + Vector3.forward * -5f;
             }
             Nowtime = 0;
             
@@ -123,8 +124,8 @@ public class Bullet : MonoBehaviour
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
 
                 MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
-                moveTowardFragment.InternalTime = 0.5f;
-                moveTowardFragment.Speed = 0.2f;
+                moveTowardFragment.InternalTime = 0.1f;
+                moveTowardFragment.Speed = 10f;
                 moveTowardFragment.Direction = collision.transform.position - transform.position;
                 moveTowardFragment.TakeEffect(collision.gameObject.GetComponent<Entity>());
 
