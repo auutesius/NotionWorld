@@ -33,7 +33,7 @@ namespace NotionWorld.Behaviors
             animatorModifier = new AnimatorTriggerModifier()
             {
                 Animator = animator,
-                Name = "Attack"
+                Name = "Skill"
             };
         }
 
