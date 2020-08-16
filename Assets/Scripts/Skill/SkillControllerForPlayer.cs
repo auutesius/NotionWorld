@@ -16,9 +16,12 @@ public class SkillControllerForPlayer : MonoBehaviour
     public Entity entity;
     private SkillAction skill;
     public RippleEffect ripple;
-    private Vector2 pos1;
     private Vector2 pos2;
     private Vector2 pos3;
+    private void Awake() {
+        pos2 = GameObject.Find("Button_Skill2").transform.position;
+        pos3 = GameObject.Find("Button_Skill3").transform.position;
+    }
     public void SetSkillAvailable(bool s)
     {
         if (!isWorking)
@@ -87,8 +90,10 @@ public class SkillControllerForPlayer : MonoBehaviour
         invincibleFragment.TakeEffect(entity);
     }
     public void RecoverPos(){
-        
+        transform.GetChild(1).GetChild(1).position = pos2;
+        transform.GetChild(1).GetChild(2).position = pos3;
     }
+
     // public void SetSkillTouchPoint(){
     //     if(skill != null){
     //         skill.TouchPoint = EasyTouch.current.position;
