@@ -16,12 +16,13 @@ public class SkillControllerForPlayer : MonoBehaviour
     public Entity entity;
     private SkillAction skill;
     public RippleEffect ripple;
-    private Vector2 pos2;
-    private Vector2 pos3;
-    private void Awake() {
-        pos2 = GameObject.Find("Button_Skill2").transform.position;
-        pos3 = GameObject.Find("Button_Skill3").transform.position;
+    private RectTransform pos2;
+    private RectTransform pos3;
+    public void OnDragStart() {
+        pos2 = GameObject.Find("Button_Skill2").GetComponent<RectTransform>();
+        pos3 = GameObject.Find("Button_Skill3").GetComponent<RectTransform>();
     }
+
     public void SetSkillAvailable(bool s)
     {
         if (!isWorking)
@@ -67,9 +68,12 @@ public class SkillControllerForPlayer : MonoBehaviour
             skill = new SkillAction();
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
             skill.TouchPoint =  Camera.main.ScreenToWorldPoint(EasyTouch.current.position);
-            Debug.Log("Skill Position" + skill.TouchPoint);
-            Debug.Log("Touch Point" + EasyTouch.current.position);
+            GameObject.Find("Button_Skill2").GetComponent<RectTransform>().pivot = pos2.pivot;
+            GameObject.Find("Button_Skill2").GetComponent<RectTransform>().position = pos2.position;
+            GameObject.Find("Button_Skill3").GetComponent<RectTransform>().pivot = pos3.pivot;
+            GameObject.Find("Button_Skill3").GetComponent<RectTransform>().position = pos3.position;
             skill.TakeAction(entity);
+            
             StopAllCoroutines();
             mask.SetActive(false);
             isWorking = false;
@@ -88,10 +92,6 @@ public class SkillControllerForPlayer : MonoBehaviour
         InvincibleFragment invincibleFragment = new InvincibleFragment();
         invincibleFragment.InternalTime = 100f;   // 无敌时间
         invincibleFragment.TakeEffect(entity);
-    }
-    public void RecoverPos(){
-        transform.GetChild(1).GetChild(1).position = pos2;
-        transform.GetChild(1).GetChild(2).position = pos3;
     }
 
     // public void SetSkillTouchPoint(){
