@@ -25,6 +25,8 @@ public class Bullet : MonoBehaviour
     protected int DamageValue;
     protected string ActorTag;
 
+    public float force;
+
     HealthModifier modifier;
 
     [Header("音效与特效")]
@@ -123,11 +125,11 @@ public class Bullet : MonoBehaviour
             {
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
 
-                MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
-                moveTowardFragment.InternalTime = 1f;
-                moveTowardFragment.Speed = 0.2f;
-                moveTowardFragment.Direction = collision.transform.position - transform.position;
-                moveTowardFragment.TakeEffect(collision.gameObject.GetComponent<Entity>());
+                Rigidbody2D rigidbody = collision.GetComponent<Rigidbody2D>();
+                if(rigidbody != null)
+                {
+                    rigidbody.AddForce(force * (collision.transform.position - transform.position).normalized);
+                }
 
                 AnimatorParameterFragment animator = new AnimatorParameterFragment();
                 animator.Animator = collision.transform.GetChild(0).GetComponent<Animator>();

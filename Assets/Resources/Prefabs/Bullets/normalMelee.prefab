@@ -254,6 +254,7 @@ MonoBehaviour:
   AutoRecycleTime: 0.18
   Scale: {x: 1, y: 1, z: 1}
   AttackTag: 
+  force: 50
   HitEffect: Energy3_0
   DestoryEffect: 
 --- !u!61 &5522420392789793821
