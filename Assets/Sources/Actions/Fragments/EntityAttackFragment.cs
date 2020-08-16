@@ -33,7 +33,7 @@ namespace NotionWorld.Actions
 
             GameObject bullet = ObjectPool.GetObject(attack.AttackType, "Bullets");
             bullet.GetComponent<Bullet>().Speed = attack.BulletSpeed;
-            bullet.GetComponent<Bullet>().ActiveIt(position, new Vector3(0f, 0f, euler), attack.Value, Target.tag);
+            //bullet.GetComponent<Bullet>().ActiveIt(position, new Vector3(0f, 0f, euler), attack.Value, Target.tag);
         }
     }
 

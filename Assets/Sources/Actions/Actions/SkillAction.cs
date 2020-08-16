@@ -90,7 +90,7 @@ namespace NotionWorld.Actions
                 // 冲刺
                 MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
                 moveTowardFragment.InternalTime = SkillInternal;
-                moveTowardFragment.Direction = Vector2.right;
+                moveTowardFragment.Direction = TouchPoint;
                 moveTowardFragment.Speed = 0.4f;
                 moveTowardFragment.TakeEffect(entity);
 

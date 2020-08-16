@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
     protected Vector3 m_euler;
 
 
+
     public virtual void ActiveIt(Vector3 RespawnPos, Vector3 Euler, int Damage, string TargetTag)
     {
         DamageValue = Damage;
@@ -123,11 +124,15 @@ public class Bullet : MonoBehaviour
             {
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
 
-                MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
-                moveTowardFragment.InternalTime = 1f;
-                moveTowardFragment.Speed = 0.2f;
-                moveTowardFragment.Direction = collision.transform.position - transform.position;
-                moveTowardFragment.TakeEffect(collision.gameObject.GetComponent<Entity>());
+                // MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
+                // moveTowardFragment.InternalTime = 1f;
+                // moveTowardFragment.Speed = 0.2f;
+                // moveTowardFragment.Direction = collision.transform.position - transform.position;
+                // moveTowardFragment.TakeEffect(collision.gameObject.GetComponent<Entity>());
+                //Debug.Log(collision.transform.position - transform.position);
+                Vector2 f = 200*(collision.transform.position - transform.position);
+                collision.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(f);
 
                 AnimatorParameterFragment animator = new AnimatorParameterFragment();
                 animator.Animator = collision.transform.GetChild(0).GetComponent<Animator>();

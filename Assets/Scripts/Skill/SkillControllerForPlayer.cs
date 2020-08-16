@@ -5,6 +5,7 @@ using NotionWorld.Entities;
 using NotionWorld.Capabilities;
 using NotionWorld.Actions;
 using System.Linq;
+using HedgehogTeam.EasyTouch;
 
 public class SkillControllerForPlayer : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class SkillControllerForPlayer : MonoBehaviour
     public Entity entity;
     private SkillAction skill;
     public RippleEffect ripple;
+    private Vector2 pos1;
+    private Vector2 pos2;
+    private Vector2 pos3;
     public void SetSkillAvailable(bool s)
     {
         if (!isWorking)
@@ -59,8 +63,10 @@ public class SkillControllerForPlayer : MonoBehaviour
         {
             skill = new SkillAction();
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
+            skill.TouchPoint =  Camera.main.ScreenToWorldPoint(EasyTouch.current.position);
+            Debug.Log("Skill Position" + skill.TouchPoint);
+            Debug.Log("Touch Point" + EasyTouch.current.position);
             skill.TakeAction(entity);
-
             StopAllCoroutines();
             mask.SetActive(false);
             isWorking = false;
@@ -77,8 +83,15 @@ public class SkillControllerForPlayer : MonoBehaviour
     public void InvincibleButton()
     {
         InvincibleFragment invincibleFragment = new InvincibleFragment();
-        invincibleFragment.InternalTime = 1f;   // 无敌时间
+        invincibleFragment.InternalTime = 100f;   // 无敌时间
         invincibleFragment.TakeEffect(entity);
     }
-
+    public void RecoverPos(){
+        
+    }
+    // public void SetSkillTouchPoint(){
+    //     if(skill != null){
+    //         skill.TouchPoint = EasyTouch.current.position;
+    //     }
+    // }
 }

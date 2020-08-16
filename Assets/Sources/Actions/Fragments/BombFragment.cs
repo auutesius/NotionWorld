@@ -16,11 +16,13 @@ namespace NotionWorld.Actions
         public int Damage;
         public override void TakeEffect(Entity actor)
         {
+
             Vector3 AttackDir = TargetPos - actor.transform.position;
+            float distance = AttackDir.magnitude;
             float euler = AttackDir.y > 0 ? -(Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI : -((Mathf.Atan(AttackDir.x / AttackDir.y)) * 180 / Mathf.PI - 180);
             GameObject bullet = ObjectPool.GetObject("BombBullet", "Bullets");
-            bullet.GetComponent<Bullet>().Speed = BulletSpeed;
-            bullet.GetComponent<Bullet>().ActiveIt(actor.transform.position, new Vector3(0f, 0f, euler), Damage, AttackTag);
+            bullet.GetComponent<BombBullet>().Speed = BulletSpeed;
+            bullet.GetComponent<BombBullet>().ActiveIt(actor.transform.position, new Vector3(0f, 0f, euler), Damage, AttackTag,distance);
 
         }
     }

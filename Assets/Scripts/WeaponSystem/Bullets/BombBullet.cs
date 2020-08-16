@@ -14,10 +14,13 @@ public class BombBullet : Bullet
     public int GravitationInternal; // 吸引力效用时间
     public int GravitationPower;    // 吸引力
     GravitationModifier gravitationModifier;
+    float flyingDistance = 0;
+    float targetDistance = 0;
 
 
-    public override void ActiveIt(Vector3 RespawnPos, Vector3 Euler, int Damage, string TargetTag)
+    public void ActiveIt(Vector3 RespawnPos, Vector3 Euler, int Damage, string TargetTag,float distance)
     {
+        targetDistance = distance;
         DamageValue = Damage;
         transform.localScale = Scale;
         transform.position = RespawnPos;
@@ -34,8 +37,13 @@ public class BombBullet : Bullet
         {
             Nowtime += Time.deltaTime;
             NowSpeed = SpeedRatio.Evaluate(Nowtime) * Speed;
-            transform.Translate(Vector3.up * NowSpeed);
-            transform.GetChild(0).transform.Rotate(NowSpeed * Vector3.forward * 30);
+            if(flyingDistance <= targetDistance){
+                Vector2 trans = Vector3.up * NowSpeed;
+                transform.Translate(trans);
+                transform.GetChild(0).transform.Rotate(NowSpeed * Vector3.forward * 30);
+                flyingDistance += trans.magnitude;
+            }
+            
         }
     }
 
@@ -96,7 +104,8 @@ public class BombBullet : Bullet
                     }
                 }
             }
-
+            flyingDistance = 0;
+            targetDistance = 0;
             ObjectPool.RecycleObject(gameObject);
             IsNotRecycled = false;
         }
