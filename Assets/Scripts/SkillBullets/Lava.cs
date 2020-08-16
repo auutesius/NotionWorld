@@ -39,7 +39,11 @@ public sealed class Lava : SkillBullet
         var entity = other.gameObject.GetComponent<Entity>();
         if (entity != null)
         {
-            entity.GetCapability<BuffList>().SetBuff(new Bleeding(damage));   
+            var list = entity.GetCapability<BuffList>();
+            if(list != null)
+            {
+                list.SetBuff(new Bleeding(damage));   
+            }
         }
     }
 }

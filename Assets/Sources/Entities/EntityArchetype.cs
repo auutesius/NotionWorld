@@ -27,8 +27,8 @@ namespace NotionWorld.Entities
                 {
                     return null;
                 }
-                return new Health() 
-                { 
+                return new Health()
+                {
                     Value = int.Parse(row[index] as string),
                     MaxValue = int.Parse(row[++index] as string)
                 };
@@ -83,7 +83,7 @@ namespace NotionWorld.Entities
                     SkillTypes = (row[index] as string).Split(' ')
                 };
             },
-            ["BuffList"] = (DataRow row, ref int index) => {return new BuffList() ;}
+            ["BuffList"] = (DataRow row, ref int index) => { return new BuffList(); }
         };
 
         internal Capability[] CreateCapabilities()

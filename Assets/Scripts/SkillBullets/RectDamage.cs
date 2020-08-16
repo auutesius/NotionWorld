@@ -94,11 +94,11 @@ public sealed class RectDamage : SkillBullet
             if (entity != null)
             {
                 healthModifier.Health = entity.GetCapability<Health>();
+                healthModifier.TakeEffect();
+
+                targetAnimator.Animator = gameObject.GetComponent<Animator>();
+                targetAnimator.TakeEffect();
             }
-            targetAnimator.Animator = gameObject.GetComponent<Animator>();
-
-            healthModifier.TakeEffect();
-
             ObjectPool.RecycleObject(this.gameObject);
         }
     }

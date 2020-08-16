@@ -49,7 +49,7 @@ MonoBehaviour:
   speed: 4
   time: 4
   damage: 20
-  maxTrackAngle: 80
+  maxTrackAngle: 60
 --- !u!212 &7335836255984148315
 SpriteRenderer:
   m_ObjectHideFlags: 0
