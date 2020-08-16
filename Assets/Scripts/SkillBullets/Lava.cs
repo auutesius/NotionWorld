@@ -36,9 +36,7 @@ public sealed class Lava : SkillBullet
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        var gameObject = other.gameObject;
-
-        var entity = gameObject.GetComponent<Entity>();
+        var entity = other.gameObject.GetComponent<Entity>();
         if (entity != null)
         {
             entity.GetCapability<BuffList>().SetBuff(new Bleeding(damage));   

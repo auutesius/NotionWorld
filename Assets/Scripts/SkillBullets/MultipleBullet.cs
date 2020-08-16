@@ -21,8 +21,6 @@ public sealed class MultipleBullet : SkillBullet
 
     public override void Launch(Vector2 position, Vector2 direction)
     {
-        transform.position = position;
-        transform.right = direction;
         StartCoroutine(ShootCorotinue());
     }
 
@@ -34,6 +32,7 @@ public sealed class MultipleBullet : SkillBullet
 
         for (int i = 0; i < bullets.Length; i++)
         {
+            transform.position = Source.transform.position;
             Vector2 direction = (Target.transform.position - transform.position).normalized;
             transform.right = direction;
 

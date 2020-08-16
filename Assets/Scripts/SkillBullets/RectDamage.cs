@@ -23,6 +23,8 @@ public sealed class RectDamage : SkillBullet
 
     private HealthModifier healthModifier;
 
+    private AnimatorTriggerModifier targetAnimator;
+
     private AnimatorTriggerModifier animatorTrigger;
 
     private BoxCollider2D boxCollider;
@@ -33,9 +35,14 @@ public sealed class RectDamage : SkillBullet
         {
             DeltaValue = -damage
         };
-        animatorTrigger = new AnimatorTriggerModifier()
+        targetAnimator = new AnimatorTriggerModifier()
         {
             Name = "Hit"
+        };
+        animatorTrigger = new AnimatorTriggerModifier()
+        {
+            Animator = warningObject.GetComponent<Animator>(),
+            Name = "Launch"
         };
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.size = new Vector2(length, width);
@@ -64,7 +71,8 @@ public sealed class RectDamage : SkillBullet
         }
 
         boxCollider.enabled = true;
-
+        animatorTrigger.TakeEffect();
+        targetAnimator.TakeEffect();
         timer = time;
         while (timer > 0)
         {
@@ -87,17 +95,11 @@ public sealed class RectDamage : SkillBullet
             {
                 healthModifier.Health = entity.GetCapability<Health>();
             }
-            animatorTrigger.Animator = gameObject.GetComponent<Animator>();
+            targetAnimator.Animator = gameObject.GetComponent<Animator>();
 
-            TakeEffect();
+            healthModifier.TakeEffect();
 
             ObjectPool.RecycleObject(this.gameObject);
         }
-    }
-
-    private void TakeEffect()
-    {
-        healthModifier.TakeEffect();
-        animatorTrigger.TakeEffect();
     }
 }
