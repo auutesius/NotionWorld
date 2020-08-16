@@ -65,5 +65,9 @@ public class PlayerController : MonoBehaviour, ISubscriber<JoyStickMovedEventArg
 
         entity.GetComponent<UIController>().UpdateCombo(comboController.ComboValue);
     }
+    public void BuildUpStrength(){
+        var energy = entity.GetCapability<Energy>();
+        energy.Value += EnergyPerCharge;
+    }
 
 }

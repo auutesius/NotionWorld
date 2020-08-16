@@ -7,7 +7,6 @@ public class JoyStick : MonoBehaviour
 {
 
     public Vector2 Vector;
-    public SkillControllerForPlayer skillController;
 
     private JoyStickMovedEventArgs eventArgs;
     //获取到场景中的Joystick
@@ -18,12 +17,7 @@ public class JoyStick : MonoBehaviour
     {
 
         eventArgs = new JoyStickMovedEventArgs(Vector);
-        //controlETCJoystick = ETCInput.GetControlJoystick("Joystick");
         Vector = new Vector2(controlETCJoystick.axisX.axisValue, controlETCJoystick.axisY.axisValue);
-// #if UNITY_EDITOR
-//         controlETCJoystick.joystickType = ETCJoystick.JoystickType.Static;
-// #endif
-        //controlETCButton = ETCInput.GetControlButton("Thumb");
     }
 
 
@@ -38,17 +32,5 @@ public class JoyStick : MonoBehaviour
         EventCenter.DispatchEvent(eventArgs);
     }
 
-    public void LongTap(){
-        Debug.Log("LongTap");
-       
-    }
-    public void DoubleTap(){
-        Debug.Log("DoubleTap");
-        skillController.InvincibleButton();
-        //skillController.ripple.Emit(new Vector2(0f,0f));
-        // Animator playerAnim = GameObject.Find("Player").transform.GetChild(0).GetComponent<Animator>();
-        // playerAnim.Play("muteki");
-        Debug.Log("Muteki!!!!");
-    }
 
 }

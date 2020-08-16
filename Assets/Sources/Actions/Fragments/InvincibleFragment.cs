@@ -24,6 +24,7 @@ namespace NotionWorld.Actions
         {
             await Task.Delay((int)ms);
             //actor.GetComponent<PolygonCollider2D>().enabled = true;
+            if(actor != null)
             actor.transform.GetChild(2).gameObject.SetActive(false);
             //Debug.Log(actor.GetComponent<PolygonCollider2D>().enabled);
             //Debug.Log(actor.transform.GetChild(2).gameObject.active);

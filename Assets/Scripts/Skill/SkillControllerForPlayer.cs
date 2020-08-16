@@ -16,14 +16,20 @@ public class SkillControllerForPlayer : MonoBehaviour
     public Entity entity;
     private SkillAction skill;
     public RippleEffect ripple;
-    private RectTransform pos2;
-    private RectTransform pos3;
-    public void OnDragStart() {
-        pos2 = GameObject.Find("Button_Skill2").GetComponent<RectTransform>();
-        pos3 = GameObject.Find("Button_Skill3").GetComponent<RectTransform>();
-    }
+    public GameObject BombSkill;
+    public GameObject RushSkill;
+    Vector2 pos2;
+    Vector2 pos3;
 
-    public void SetSkillAvailable(bool s)
+    private void Awake() {
+        pos2 = new Vector2(0,140);
+        pos3 = new Vector2(70,110);
+    }
+    public void ResetUIPosition(){
+        BombSkill.GetComponent<RectTransform>().anchoredPosition = pos2;
+        RushSkill.GetComponent<RectTransform>().anchoredPosition = pos3;
+    }
+        public void SetSkillAvailable(bool s)
     {
         if (!isWorking)
         {
@@ -68,10 +74,6 @@ public class SkillControllerForPlayer : MonoBehaviour
             skill = new SkillAction();
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
             skill.TouchPoint =  Camera.main.ScreenToWorldPoint(EasyTouch.current.position);
-            GameObject.Find("Button_Skill2").GetComponent<RectTransform>().pivot = pos2.pivot;
-            GameObject.Find("Button_Skill2").GetComponent<RectTransform>().position = pos2.position;
-            GameObject.Find("Button_Skill3").GetComponent<RectTransform>().pivot = pos3.pivot;
-            GameObject.Find("Button_Skill3").GetComponent<RectTransform>().position = pos3.position;
             skill.TakeAction(entity);
             
             StopAllCoroutines();
@@ -93,6 +95,7 @@ public class SkillControllerForPlayer : MonoBehaviour
         invincibleFragment.InternalTime = 100f;   // 无敌时间
         invincibleFragment.TakeEffect(entity);
     }
+    
 
     // public void SetSkillTouchPoint(){
     //     if(skill != null){
