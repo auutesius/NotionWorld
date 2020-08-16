@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coldDown: 10
-  damage: 50
+  damage: 25
+  selfDamage: 100
   warningTime: 1
-  radius: 0
+  radius: 0.625

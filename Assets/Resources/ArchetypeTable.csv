@@ -1,8 +1,8 @@
 ID,Health,MaxHealth,Speed,Attack,Interval,Range,AttackType,BulletSpeed,Energy,MaxEnergy,Recharge,Skill,BuffList
 Player,250,250,3.5,30,1,3,normalMelee,0.8,8,10,7,RotateAttackSkill BombSkill RushSkill ,
-Fool,120,150,1.5,,,,,,,,,,
-RevolverMan,90,120,2,,,,,,,,,,
-ShotgunMan,80,110,2,,,,,,,,,,
-Knight,195,225,2,,,,,,,,,,
-Octopus,50,80,2,,,,,,,,,,
+Fool,120,120,1.5,,,,,,,,,,
+RevolverMan,90,90,2,,,,,,,,,,
+ShotgunMan,80,80,2,,,,,,,,,,
+Knight,195,195,2,,,,,,,,,,
+Octopus,60,60,2,,,,,,,,,,
 MegaOctopus,2000,2000,,,,,,,,,,,

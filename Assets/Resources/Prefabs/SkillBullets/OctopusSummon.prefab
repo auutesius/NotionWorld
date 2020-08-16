@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coldDown: 0
-  gameObjectName: Fool
+  gameObjectName: Octopus
   points:
   - {x: -1, y: 3}
   - {x: 1, y: 3}
