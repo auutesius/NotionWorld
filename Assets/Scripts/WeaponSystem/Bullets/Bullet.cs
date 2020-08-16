@@ -124,8 +124,8 @@ public class Bullet : MonoBehaviour
                 modifier.TakeEffect(collision.gameObject.GetComponent<Entity>());
 
                 MoveTowardFragment moveTowardFragment = new MoveTowardFragment();
-                moveTowardFragment.InternalTime = 0.1f;
-                moveTowardFragment.Speed = 10f;
+                moveTowardFragment.InternalTime = 1f;
+                moveTowardFragment.Speed = 0.2f;
                 moveTowardFragment.Direction = collision.transform.position - transform.position;
                 moveTowardFragment.TakeEffect(collision.gameObject.GetComponent<Entity>());
 
