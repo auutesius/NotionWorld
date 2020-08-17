@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1065736184891338366}
   - component: {fileID: 2861978449686829108}
   - component: {fileID: 4487069796136333261}
+  - component: {fileID: 4838913332231563051}
   m_Layer: 0
   m_Name: MegaLava
   m_TagString: Bullets
@@ -115,3 +116,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!95 &4838913332231563051
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239545423251665547}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22f9ab3996be9fa4cb8ae2da9068d599, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

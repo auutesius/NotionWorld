@@ -19,6 +19,8 @@ public sealed class SelfDestruction : SkillBullet
 
     private HealthModifier healthModifier;
 
+    public string explodeEffect;
+
     private void Awake()
     {
         healthModifier = new HealthModifier();
@@ -36,7 +38,6 @@ public sealed class SelfDestruction : SkillBullet
 
         while (timer > 0)
         {
-            //TODO: 闪烁效果
             timer -= Time.fixedDeltaTime;
             yield return wait;
         }
@@ -46,7 +47,9 @@ public sealed class SelfDestruction : SkillBullet
 
     private void SelfDestruct()
     {
-        //TODO: 爆炸效果
+        GameObject shootHitEffect = ObjectPool.GetObject(explodeEffect, "Effects");
+        shootHitEffect.transform.position = Source.transform.position;
+
         Entity entity;
         if ((Target.transform.position - Source.transform.position).magnitude < radius)
         {

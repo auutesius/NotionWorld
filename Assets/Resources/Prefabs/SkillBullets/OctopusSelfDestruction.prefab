@@ -48,3 +48,4 @@ MonoBehaviour:
   selfDamage: 100
   warningTime: 1
   radius: 0.625
+  explodeEffect: Explosion_Red

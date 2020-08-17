@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8041249986471814740}
   - component: {fileID: 7897880529654742172}
   - component: {fileID: 9065294391480734649}
+  - component: {fileID: -6469795155478726918}
   m_Layer: 0
   m_Name: MegaMortar
   m_TagString: Bullets
@@ -117,3 +118,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3125
+--- !u!95 &-6469795155478726918
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041249986471814742}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd0ed1d4882c9a04985af137f7d2246c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
