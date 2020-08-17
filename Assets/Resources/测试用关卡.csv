@@ -1,4 +1,5 @@
 Time,ID,PositionX,PositionY
+<<<<<<< HEAD
 0,Fool,3.75,7.5
 0,RevolverMan,11.25,7.5
 0.5,RevolverMan,3.75,2.5
@@ -22,3 +23,28 @@ Time,ID,PositionX,PositionY
 36.5,RevolverMan,6.25,8.75
 37.5,ShotgunMan,7.5,5.625
 38.5,Fool,8.75,7.5
+=======
+0,Fool,1.1875,8.75
+0,RevolverMan,1.1875,10
+0.5,RevolverMan,2.5,11.3125
+4,Fool,13.125,11.3125
+10,Fool,2.5,7.5
+10,RevolverMan,3.75,8.75
+13,RevolverMan,5,8.125
+13,Fool,6.875,7.5
+13,RevolverMan,9.375,8.125
+13,Fool,8.75,6.875
+16.5,ShotgunMan,9.375,6.25
+16.5,RevolverMan,6.25,8.75
+17.5,ShotgunMan,7.5,5.625
+18.5,Fool,8.75,7.5
+26,RevolverMan,10.125,7.625
+26.5,RevolverMan,12,7
+27,ShotgunMan,13.875,8.875
+28.5,Fool,10.125,7.625
+28.5,ShotgunMan,8.875,5.125
+29,ShotgunMan,7.625,8.875
+29,Knight,7.625,5.75
+29,Fool,12.625,11.4375
+30,RevolverMan,13.25,7.625
+>>>>>>> 5122f2dc22a046e7e082a6f87b8d45a8195fa4b0
