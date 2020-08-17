@@ -55,7 +55,7 @@ public class SkillControllerForPlayer : MonoBehaviour
     {
         SetSkillAvailable(false);
         isWorking = true;
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.1f;
         transform.GetChild(1).gameObject.SetActive(isWorking);
         mask.SetActive(true);
 
@@ -75,7 +75,7 @@ public class SkillControllerForPlayer : MonoBehaviour
         {
             skill = new SkillAction();
             skill.SkillType = entity.GetCapability<Skill>().SkillTypes[num];
-            skill.TouchPoint =  Camera.main.ScreenToWorldPoint(EasyTouch.current.position);
+            if(num != 0)skill.TouchPoint =  Camera.main.ScreenToWorldPoint(EasyTouch.current.position);
             skill.TakeAction(entity);
             
             StopAllCoroutines();

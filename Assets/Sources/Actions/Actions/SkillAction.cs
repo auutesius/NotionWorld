@@ -19,7 +19,7 @@ namespace NotionWorld.Actions
             if (SkillType == "RotateAttackSkill")
             {
                 //TODO 技能持续时间暂定1s，等待完善,调整后记得调weapon上的动画时间
-                float SkillInternal = 1f;
+                float SkillInternal = 3f;
 
                 // 暂停自动攻击
                 StopAutoAttackFragment stopAutoAttackFragment = new StopAutoAttackFragment(SkillInternal);
@@ -53,8 +53,6 @@ namespace NotionWorld.Actions
                 //格挡子弹
 
                 entity.transform.GetChild(2).gameObject.SetActive(true);
-                InvincibleFragment invincibleFragment = new InvincibleFragment();
-                invincibleFragment.InternalTime = 2f;   // 无敌时间
                 entity.StartCoroutine(CloseCircleCollider(SkillInternal,entity));
                 
 
@@ -123,6 +121,9 @@ namespace NotionWorld.Actions
                 audioPlayFragment.AudioName = SkillType;
                 audioPlayFragment.PlayInternal = 0f;
                 audioPlayFragment.TakeEffect(entity);
+
+                entity.transform.GetChild(2).gameObject.SetActive(true);
+                entity.StartCoroutine(CloseCircleCollider(SkillInternal,entity));
             }
             else
             {

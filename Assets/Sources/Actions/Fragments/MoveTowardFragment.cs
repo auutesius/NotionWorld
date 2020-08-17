@@ -26,6 +26,7 @@ namespace NotionWorld.Actions
             while (step < (int)(InternalTime * 1000 / ms))
             {
                 await Task.Delay(ms);
+                if(actor != null)
                 actor.transform.Translate(Speed * (Vector3)Direction.normalized);
                 step++;
             }
