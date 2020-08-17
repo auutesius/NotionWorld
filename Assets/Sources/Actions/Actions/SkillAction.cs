@@ -52,10 +52,9 @@ namespace NotionWorld.Actions
 
                 //格挡子弹
 
-                entity.GetComponent<CircleCollider2D>().enabled = true;
                 entity.transform.GetChild(2).gameObject.SetActive(true);
                 InvincibleFragment invincibleFragment = new InvincibleFragment();
-                invincibleFragment.InternalTime = 1f;   // 无敌时间
+                invincibleFragment.InternalTime = 2f;   // 无敌时间
                 entity.StartCoroutine(CloseCircleCollider(SkillInternal,entity));
                 
 
