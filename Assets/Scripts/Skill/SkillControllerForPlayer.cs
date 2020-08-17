@@ -18,10 +18,12 @@ public class SkillControllerForPlayer : MonoBehaviour
     public RippleEffect ripple;
     public GameObject BombSkill;
     public GameObject RushSkill;
+    [SerializeField]public float invincibleTime;
     Vector2 pos2;
     Vector2 pos3;
 
     private void Awake() {
+        invincibleTime = 1f;
         pos2 = new Vector2(0,140);
         pos3 = new Vector2(70,110);
     }
@@ -92,7 +94,7 @@ public class SkillControllerForPlayer : MonoBehaviour
     public void InvincibleButton()
     {
         InvincibleFragment invincibleFragment = new InvincibleFragment();
-        invincibleFragment.InternalTime = 100f;   // 无敌时间
+        invincibleFragment.InternalTime = invincibleTime;   // 无敌时间
         invincibleFragment.TakeEffect(entity);
     }
     

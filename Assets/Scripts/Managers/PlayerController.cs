@@ -68,6 +68,13 @@ public class PlayerController : MonoBehaviour, ISubscriber<JoyStickMovedEventArg
     public void BuildUpStrength(){
         var energy = entity.GetCapability<Energy>();
         energy.Value += EnergyPerCharge;
+        entity.transform.GetChild(3).gameObject.SetActive(true);
+        //entity.transform.GetChild(3).GetComponent<Animator>().Play("BuildUpStrength");
+        StartCoroutine(CloseBuildUpStrngth(entity));
+    }
+    IEnumerator CloseBuildUpStrngth(Entity entity){
+        yield return new WaitForSeconds(1f);
+        entity.transform.GetChild(3).gameObject.SetActive(false);
     }
 
 }
