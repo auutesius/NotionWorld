@@ -1,6 +1,11 @@
 Time,ID,PositionX,PositionY
-0,Fool,1.1875,4.75
-0,RevolverMan,1.1875,5
-0.5,RevolverMan,2.5,6.3125
-0,ShotgunMan,13.125,6.3125
-1,Knight,2,5
+0,Fool,2.5,7.5
+0,RevolverMan,3.75,8.75
+3,RevolverMan,5,8.125
+3,Fool,1100,1200
+3,RevolverMan,1500,1300
+3,Fool,1400,1100
+6.5,ShotgunMan,1500,1000
+6.5,RevolverMan,1000,1400
+7.5,ShotgunMan,1200,900
+8.5,Fool,1400,1200
