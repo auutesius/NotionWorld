@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coldDown: 2
   damage: 15
-  speed: 4
+  speed: 2.5
   time: 5
   HitEffectName: Explosion_Red
 --- !u!58 &2809085799884728147

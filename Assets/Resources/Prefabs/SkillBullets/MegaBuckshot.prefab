@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e66c8fa09b65a4e8ba07752b181455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coldDown: 0.1
+  coldDown: 0.5
   damage: 20
-  speed: 4
+  speed: 2.8
   time: 3
   HitEffectName: Explosion_Red
 --- !u!58 &3451579742566315049
