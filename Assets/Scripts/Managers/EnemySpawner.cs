@@ -22,15 +22,9 @@ public class EnemySpawner : MonoBehaviour
 
     private const float refreshInterval = 1.0F;
 
-    public float enterspeed;
-
-    public float enterDistance;
+    public float startInterval = 3F;
 
     public float waveInterval = 10F;
-
-    public float spawningTime = 1F;
-
-    private bool spawnStarted = false;
 
     private bool inWaveTime = false;
 
@@ -50,8 +44,9 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator SpawnCorotinue()
     {
+        StartCoroutine(WaveTipCorotinue(startInterval));
+        yield return new WaitForSeconds(startInterval);
         WaitForSeconds second = new WaitForSeconds(refreshInterval);
-        WaitForSeconds spawning = new WaitForSeconds(spawningTime);
         int i = 0;
         float timer = 0;
         DataRow row = null;
@@ -62,11 +57,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 row = spawnTable.Rows[i];
                 time = float.Parse(row["Time"] as string);
-                if (!spawnStarted)
-                {
-                    spawnStarted = true;
-                    StartCoroutine(WaveTipCorotinue(time));
-                }
             }
             if (timer >= time)
             {
