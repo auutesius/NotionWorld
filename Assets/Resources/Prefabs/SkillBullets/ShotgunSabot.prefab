@@ -48,6 +48,6 @@ MonoBehaviour:
   time: 0
   buckshot: Buckshot
   angle: 70
-  count: 5
+  count: 4
   wave: 1
   waveInterval: 0.5

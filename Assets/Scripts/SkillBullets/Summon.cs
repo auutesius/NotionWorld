@@ -13,27 +13,23 @@ public sealed class Summon : SkillBullet
 
     public Vector2[] points;
 
+
     public override void Launch(Vector2 position, Vector2 direction)
+    {
+        Spawns();
+    }
+
+    private void Spawns()
     {
         foreach (var point in points)
         {
-            SpawnEnemy(gameObjectName, point);
+            var bulletObj = ObjectPool.GetObject("Spawn", "SkillBullets");
+            var bullet = bulletObj.GetComponent<Spawn>();
+            bullet.Target = Target;
+            bullet.gameObjectName = gameObjectName;
+            bullet.point = point;
+            bullet.Launch(point, Vector2.zero);
         }
         ObjectPool.RecycleObject(this.gameObject);
-    }
-
-    private void SpawnEnemy(string id, Vector2 position)
-    {
-        var enemy = ObjectPool.GetObject(id, "Entities");
-
-        enemy.transform.position = position;
-
-        Behavior behavior = enemy.GetComponent<Behavior>();
-        if (behavior != null)
-        {
-            behavior.SetVariableValue("TrackTarget", Target);
-            behavior.EnableBehavior();
-            behavior.Start();
-        }
     }
 }
