@@ -72,19 +72,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 string id = row["ID"] as string;
                 Vector2 position = new Vector2(float.Parse(row["PositionX"] as string), float.Parse(row["PositionY"] as string));
-
-                var enemy = ObjectPool.GetObject(id, "Entities");
-
-                enemy.transform.position = position;
-                Behavior behavior = enemy.GetComponent<Behavior>();
-
-                yield return spawning;
-                if (behavior != null)
-                {
-                    behavior.SetVariableValue("TrackTarget", player);
-                    behavior.EnableBehavior();
-                    behavior.Start();
-                }
+                SpawnEnemy(id, position);
                 i++;
                 row = null;
             }
@@ -103,17 +91,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy(string id, Vector2 position)
     {
-        var enemy = ObjectPool.GetObject(id, "Entities");
-
-        enemy.transform.position = position;
-
-        Behavior behavior = enemy.GetComponent<Behavior>();
-        if (behavior != null)
-        {
-            behavior.SetVariableValue("TrackTarget", player);
-            behavior.EnableBehavior();
-            behavior.Start();
-        }
+        var bulletObj = ObjectPool.GetObject("Spawn", "SkillBullets");
+        var bullet = bulletObj.GetComponent<Spawn>();
+        bullet.Target = player;
+        bullet.gameObjectName = id;
+        bullet.point = position;
+        bullet.Launch(position, Vector2.zero);
     }
 
     private IEnumerator WaveTipCorotinue(float nextWaveTime)
