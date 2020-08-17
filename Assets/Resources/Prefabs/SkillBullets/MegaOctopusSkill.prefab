@@ -46,6 +46,5 @@ MonoBehaviour:
   coldDown: 6
   bullets:
   - MegaMortarStrike
-  - MegaRectDamage
   - OctopusSummon
   interval: 3
