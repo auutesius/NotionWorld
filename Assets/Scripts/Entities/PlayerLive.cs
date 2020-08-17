@@ -14,7 +14,7 @@ public class PlayerLive : MonoBehaviour
 
     public float endingScale = 0.5F;
 
-    public float sceneTime = 4F;
+    public float sceneTime = 3F;
 
     public Animator animator;
 
@@ -49,6 +49,6 @@ public class PlayerLive : MonoBehaviour
         fade.FadeOut();
 
         yield return new WaitForSeconds(sceneTime);
-        
+        SceneManager.LoadScene("died");
     }
 }

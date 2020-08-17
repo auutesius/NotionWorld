@@ -531,9 +531,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c5432979e04f842aa5f0ab0506f1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endingTime: 4
+  endingTime: 2
   endingScale: 0.6
-  uiTime: 4
+  sceneTime: 3
   animator: {fileID: 866180008}
   uIController: {fileID: 1528743936}
 --- !u!1 &3451826307292894053
