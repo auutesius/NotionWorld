@@ -5,9 +5,13 @@ using NotionWorld.Capabilities;
 using NotionWorld.Entities;
 using NotionWorld.Worlds;
 
-public class EntityLive : MonoBehaviour
+public class PlayerLive : MonoBehaviour
 {
     private Health health;
+
+    private float endingTime = 2F;
+
+    private float endingScale = 0.5F;
 
     void Start()
     {
@@ -19,7 +23,15 @@ public class EntityLive : MonoBehaviour
         if (health.Value < 0)
         {
             health.Value = health.MaxValue;
-            ObjectPool.RecycleObject(gameObject);
+            
+            StartCoroutine(EndCorotinue());
         }
+    }
+
+    private IEnumerator EndCorotinue()
+    {
+        Time.timeScale = endingScale;
+        yield return new WaitForSeconds(endingTime);
+        Time.timeScale = 1;
     }
 }

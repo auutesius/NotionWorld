@@ -5,7 +5,6 @@ using UnityEngine;
 using NotionWorld.IO;
 using NotionWorld.Events;
 using UnityEngine.UI;
-using BehaviorDesigner.Runtime;
 using ObjectPool = NotionWorld.Worlds.ObjectPool;
 
 public class EnemySpawner : MonoBehaviour
