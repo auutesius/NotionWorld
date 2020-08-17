@@ -115,10 +115,10 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullets"))
-        {
-            return;
-        }
+        // if (collision.gameObject.CompareTag("Bullets"))
+        // {
+        //     return;
+        // }
         if (AttackTag != null && AttackTag != "")
         {
             if (collision.gameObject.CompareTag(AttackTag))

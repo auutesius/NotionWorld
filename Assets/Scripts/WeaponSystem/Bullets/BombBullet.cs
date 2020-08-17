@@ -133,10 +133,10 @@ public class BombBullet : Bullet
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullets"))
-        {
-            return;
-        }
+        // if (collision.gameObject.CompareTag("Bullets"))
+        // {
+        //     return;
+        // }
         if (AttackTag != null && AttackTag != "")
         {
             if (collision.gameObject.CompareTag(AttackTag))
