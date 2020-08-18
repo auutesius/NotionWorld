@@ -59,5 +59,7 @@ public class BossLive : MonoBehaviour
         yield return new WaitForSeconds(uiTime);
         var success = Instantiate(victorCanva);
         success.gameObject.SetActive(true);
+
+        ObjectPool.RecycleObject(gameObject);
     }
 }
