@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coldDown: 1.5
-  speed: 0
-  time: 0
+  speed: 10
+  time: 0.1
   buckshot: MegaRandomBuckshot
   minDeltaAngle: 40
   maxDeltaAngle: 80
