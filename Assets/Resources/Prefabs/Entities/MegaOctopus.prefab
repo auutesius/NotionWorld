@@ -135,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 2808800772670817535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 6149465979253963160}
   m_Father: {fileID: 0}
@@ -384,5 +384,4 @@ MonoBehaviour:
   uiTime: 3
   source: {fileID: -5119782095949535037}
   clip: {fileID: 8300000, guid: e01f398edcc2b224e9c3bc57d00c772d, type: 3}
-  victorCanva: {fileID: 3988537079583112097, guid: 434a380ad2523654d9061ed005fe9acb,
-    type: 3}
+  uIManager: {fileID: 0}

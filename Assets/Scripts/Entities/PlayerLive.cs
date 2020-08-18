@@ -30,6 +30,8 @@ public class PlayerLive : MonoBehaviour
     public WeaponController weaponController;
     public UIManager uIManager;
 
+    private bool died;
+
     void Start()
     {
         health = GetComponent<Entity>().GetCapability<Health>();
@@ -44,10 +46,9 @@ public class PlayerLive : MonoBehaviour
             source.PlayOneShot(clip);
         }
 
-        if (health.Value < 0)
+        if (health.Value < 0 && !died)
         {
-            health.Value = health.MaxValue;
-
+            died = true;
             StartCoroutine(EndCorotinue());
         }
     }

@@ -23,25 +23,25 @@ public class BossLive : MonoBehaviour
 
     public UIManager uIManager;
 
-     void Start()
+    private bool died;
+
+    void Start()
     {
         health = GetComponent<Entity>().GetCapability<Health>();
         lastValue = health.Value;
-
-       
     }
 
     void Update()
     {
-        if(lastValue != health.Value)
+        if (lastValue != health.Value)
         {
             lastValue = health.Value;
             source.PlayOneShot(clip);
         }
 
-        if (health.Value < 0)
+        if (health.Value < 0 && !died)
         {
-            health.Value = health.MaxValue;
+            died = true;
             StartCoroutine(EndCorotinue());
         }
     }
@@ -57,7 +57,7 @@ public class BossLive : MonoBehaviour
         fade.FadeOut();
 
         yield return new WaitForSeconds(uiTime);
-        uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uIManager = GameObject.Find("Managers/UIManager").GetComponent<UIManager>();
         uIManager.DisplaySuccessfulUI();
 
         ObjectPool.RecycleObject(gameObject);
