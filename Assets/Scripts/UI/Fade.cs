@@ -41,7 +41,6 @@ public class Fade : MonoBehaviour
             timer -= Time.fixedDeltaTime;
             color.a += delta;
             fadeImage.color = color;
-            Debug.Log(color.a);
             yield return wait;
         }
     }

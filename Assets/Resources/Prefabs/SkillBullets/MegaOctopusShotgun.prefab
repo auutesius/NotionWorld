@@ -49,5 +49,5 @@ MonoBehaviour:
   buckshot: Buckshot
   angle: 60
   count: 4
-  wave: 4
+  wave: 3
   waveInterval: 0.15625

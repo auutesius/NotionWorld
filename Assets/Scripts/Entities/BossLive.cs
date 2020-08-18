@@ -5,7 +5,7 @@ using NotionWorld.Capabilities;
 using NotionWorld.Entities;
 using NotionWorld.Worlds;
 
-public class PlayerLive : MonoBehaviour
+public class BossLive : MonoBehaviour
 {
     private Health health;
 
@@ -15,29 +15,25 @@ public class PlayerLive : MonoBehaviour
 
     public float uiTime = 3F;
 
-    public Animator animator;
-
-    public UIController uIController;
-
     private int lastValue;
 
     public AudioSource source;
 
     public AudioClip clip;
 
-    public Canvas diedCanva;
+    public Canvas victorCanva;
 
-    public WeaponController weaponController;
-
-    void Start()
+     void Start()
     {
         health = GetComponent<Entity>().GetCapability<Health>();
         lastValue = health.Value;
+
+       
     }
 
     void Update()
     {
-        if (lastValue != health.Value)
+        if(lastValue != health.Value)
         {
             lastValue = health.Value;
             source.PlayOneShot(clip);
@@ -46,17 +42,12 @@ public class PlayerLive : MonoBehaviour
         if (health.Value < 0)
         {
             health.Value = health.MaxValue;
-
             StartCoroutine(EndCorotinue());
         }
     }
 
     private IEnumerator EndCorotinue()
     {
-        weaponController.IsSkilling = true;
-        uIController.enabled = false;
-        animator.SetTrigger("Die");
-
         Time.timeScale = endingScale;
         yield return new WaitForSeconds(endingTime);
         Time.timeScale = 1;
@@ -66,6 +57,7 @@ public class PlayerLive : MonoBehaviour
         fade.FadeOut();
 
         yield return new WaitForSeconds(uiTime);
-        diedCanva.gameObject.SetActive(true);
+        var success = Instantiate(victorCanva);
+        success.gameObject.SetActive(true);
     }
 }

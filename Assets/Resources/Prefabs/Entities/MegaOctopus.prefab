@@ -115,10 +115,10 @@ GameObject:
   - component: {fileID: 3195415091449558254}
   - component: {fileID: 147874848963165837}
   - component: {fileID: 1749808178196116578}
-  - component: {fileID: 3819755112395344717}
   - component: {fileID: 3074846983255779598}
   - component: {fileID: 6415544599167274399}
   - component: {fileID: -5119782095949535037}
+  - component: {fileID: 5783542603938219595}
   m_Layer: 9
   m_Name: MegaOctopus
   m_TagString: Enemies
@@ -243,20 +243,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3819755112395344717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2808800772670817535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aecdb41efb471f419a1c4b69275ff95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: -5119782095949535037}
-  clip: {fileID: 8300000, guid: e01f398edcc2b224e9c3bc57d00c772d, type: 3}
 --- !u!58 &3074846983255779598
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -381,3 +367,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5783542603938219595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808800772670817535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf45c5f8b14b2a44a49860e9d283122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endingTime: 2
+  endingScale: 0.5
+  uiTime: 3
+  source: {fileID: -5119782095949535037}
+  clip: {fileID: 8300000, guid: e01f398edcc2b224e9c3bc57d00c772d, type: 3}
+  victorCanva: {fileID: 3988537079583112097, guid: 434a380ad2523654d9061ed005fe9acb,
+    type: 3}

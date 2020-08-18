@@ -47,8 +47,8 @@ MonoBehaviour:
   speed: 0
   time: 0
   buckshot: MegaRandomBuckshot
-  minDeltaAngle: 5
-  maxDeltaAngle: 17
-  count: 5
+  minDeltaAngle: 40
+  maxDeltaAngle: 80
+  count: 6
   wave: 2
   waveInterval: 1
