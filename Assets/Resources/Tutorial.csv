@@ -1,2 +1,9 @@
 Time,ID,PositionX,PositionY
-1,Knight,0,4
+10,Fool,0,0
+18,RevolverMan,0,0
+26,ShotgunMan,0,0
+33,Knight,0,0
+44,Fool,0,-4
+44,Fool,0,4
+46,RevolverMan,0,0
+48,ShotgunMan,0,-2

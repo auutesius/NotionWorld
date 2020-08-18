@@ -20,13 +20,26 @@ public class PlayerLive : MonoBehaviour
 
     public UIController uIController;
 
+    private int lastValue;
+
+    public AudioSource source;
+
+    public AudioClip clip;
+
     void Start()
     {
         health = GetComponent<Entity>().GetCapability<Health>();
+        lastValue = health.Value;
     }
 
     void Update()
     {
+        if (lastValue != health.Value)
+        {
+            lastValue = health.Value;
+            source.PlayOneShot(clip);
+        }
+
         if (health.Value < 0)
         {
             health.Value = health.MaxValue;
