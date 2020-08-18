@@ -128,7 +128,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a3984094dc42aeb47a36734d96dc46be, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 35687d959b26c434b9bb58ea6a7f2c2f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -253,7 +253,8 @@ MonoBehaviour:
   Speed: 1
   AutoRecycleTime: 5
   Scale: {x: 1, y: 1, z: 1}
-  HitAudioSource: {fileID: 5517540041709914817}
+  AttackTag: 
+  force: 0
   HitEffect: Explosion_Red
   DestoryEffect: Explosion_Red
 --- !u!61 &5522420392789793821

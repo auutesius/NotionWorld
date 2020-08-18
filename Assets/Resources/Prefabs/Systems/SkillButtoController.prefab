@@ -639,6 +639,9 @@ MonoBehaviour:
   mask: {fileID: 0}
   entity: {fileID: 0}
   ripple: {fileID: 0}
+  BombSkill: {fileID: 0}
+  RushSkill: {fileID: 0}
+  invincibleTime: 0
 --- !u!1 &7089556425612292187
 GameObject:
   m_ObjectHideFlags: 0
