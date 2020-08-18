@@ -21,7 +21,7 @@ public class BossLive : MonoBehaviour
 
     public AudioClip clip;
 
-    public Canvas victorCanva;
+    public UIManager uIManager;
 
      void Start()
     {
@@ -57,8 +57,8 @@ public class BossLive : MonoBehaviour
         fade.FadeOut();
 
         yield return new WaitForSeconds(uiTime);
-        var success = Instantiate(victorCanva);
-        success.gameObject.SetActive(true);
+        uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uIManager.DisplaySuccessfulUI();
 
         ObjectPool.RecycleObject(gameObject);
     }

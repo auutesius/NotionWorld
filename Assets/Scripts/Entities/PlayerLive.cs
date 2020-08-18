@@ -28,6 +28,7 @@ public class PlayerLive : MonoBehaviour
     public Canvas diedCanva;
 
     public WeaponController weaponController;
+    public UIManager uIManager;
 
     void Start()
     {
@@ -64,8 +65,8 @@ public class PlayerLive : MonoBehaviour
         var fadeCanvas = ObjectPool.GetObject("FadeCanvas", "UI");
         var fade = fadeCanvas.GetComponent<Fade>();
         fade.FadeOut();
-
+        
         yield return new WaitForSeconds(uiTime);
-        diedCanva.gameObject.SetActive(true);
+        uIManager.DisplayDiedUI();
     }
 }

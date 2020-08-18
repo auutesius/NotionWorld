@@ -630,11 +630,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endingTime: 2
   endingScale: 0.6
-  sceneTime: 3
+  uiTime: 3
   animator: {fileID: 866180008}
   uIController: {fileID: 1528743936}
   source: {fileID: 5508370003451722840}
   clip: {fileID: 8300000, guid: 18d0cfa1d43895c47b479ed79d87a87a, type: 3}
+  diedCanva: {fileID: 0}
+  weaponController: {fileID: 0}
+  uIManager: {fileID: 0}
 --- !u!1 &3451826307292894053
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5780283327189786627
 Transform:
   m_ObjectHideFlags: 0
@@ -754,7 +757,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.15
 --- !u!114 &1760619806
 MonoBehaviour:
   m_ObjectHideFlags: 0

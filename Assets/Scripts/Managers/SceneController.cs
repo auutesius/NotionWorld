@@ -10,6 +10,10 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("TotalTestScene");
     }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("main_menu");
+    }
 
     public void LoadTutorial()
     {
