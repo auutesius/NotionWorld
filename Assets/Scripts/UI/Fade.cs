@@ -16,7 +16,7 @@ public class Fade : MonoBehaviour
 
     public void FadeIn()
     {
-        alpha = 1;
+        alpha = 0.75f;
         targetAlpha = 0;
         StartCoroutine(FadeCorotinue());
     }
@@ -24,7 +24,7 @@ public class Fade : MonoBehaviour
     public void FadeOut()
     {
         alpha = 0;
-        targetAlpha = 1;
+        targetAlpha = 0.75f;
         StartCoroutine(FadeCorotinue());
     }
 
