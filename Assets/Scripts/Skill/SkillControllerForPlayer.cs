@@ -97,12 +97,4 @@ public class SkillControllerForPlayer : MonoBehaviour
         invincibleFragment.InternalTime = invincibleTime;   // 无敌时间
         invincibleFragment.TakeEffect(entity);
     }
-
-    
-
-    // public void SetSkillTouchPoint(){
-    //     if(skill != null){
-    //         skill.TouchPoint = EasyTouch.current.position;
-    //     }
-    // }
 }
